@@ -27,4 +27,9 @@ public class Ship : MonoBehaviour
     {
         return damage / 10;
     }
+
+    public float GetDamage()
+    {
+        return (float)damage;
+    }
 }
