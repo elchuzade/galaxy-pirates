@@ -19,8 +19,14 @@ public class LaserShoot : MonoBehaviour
     float damage;
     Ship ship;
 
-    // Keep track of previous collect scrap material to compare to current to stop particle effects on previous
-    GameObject lastCollectScrapMaterial;
+    // List of objects that laser hits. To stop all other objects from particle effects
+    // Run the tests for hitting objects only when laser has no place to reflect any more
+    List<GameObject> laserHitObjects = new List<GameObject>();
+
+    // List of objects that laser hit in the previous frame.
+    // Compare the two lists and find the ones that are not in new list,
+    // but in old list and stop their particle effects
+    List<GameObject> previousLaserHitObjects = new List<GameObject>();
 
     void Awake()
     {
@@ -44,6 +50,9 @@ public class LaserShoot : MonoBehaviour
 
     void FixedUpdate()
     {
+        // Empty list of hitting objects, refill it all over again in each frame
+        laserHitObjects.Clear();
+
         var hitData = Physics2D.Raycast(startPoint, (direction - startPoint).normalized, defaultRayDistance);
 
         Points.Clear();
@@ -52,37 +61,63 @@ public class LaserShoot : MonoBehaviour
         // First hit point
         if (hitData)
         {
+            // Add the game object that was hit by laser to list of objects
+            laserHitObjects.Add(hitData.collider.gameObject);
+            // The laser hit some collider which is not reflecting
             if (hitData.collider.tag == "Barrier")
             {
                 ReflectFurther(startPoint, hitData);
-            }
-            else if (hitData.collider.tag == "ScrapMaterial")
+            } else if (hitData.collider.tag == "ScrapMaterial")
             {
                 hitData.collider.GetComponent<ScrapMaterial>().CollectScrapMaterial(hitData.point, damage);
                 Points.Add(hitData.point);
-
-                // The tip of the laser is on the scrap material
-                if (lastCollectScrapMaterial && lastCollectScrapMaterial.GetHashCode() != hitData.collider.gameObject.GetHashCode())
-                {
-                    // Stop the previous one and reassign it to the current one
-                    lastCollectScrapMaterial.GetComponent<ScrapMaterial>().StopCollectScrapMaterial();
-                    lastCollectScrapMaterial = hitData.collider.gameObject;
-                }
-
-                lastCollectScrapMaterial = hitData.collider.gameObject;
             } else if (hitData.collider.tag == "Breakable")
             {
-                hitData.collider.GetComponent<ScrapMaterial>().CollectScrapMaterial(hitData.point, damage);
+                hitData.collider.GetComponent<Breakable>().DamageBreakableObject(hitData.point, damage);
                 Points.Add(hitData.point);
-
-                hitData.collider.GetComponent<Breakable>().DamageBreakableObject(damage);
+            } else
+            {
+                Points.Add(hitData.point);
             }
+
+            StopRedundantParticles();
+
+            // Clear old list before repopulating it with laser new hit values
+            previousLaserHitObjects.Clear();
+            // Copy values from a new list of laser hit objects to old list of laser hit objects
+            previousLaserHitObjects.AddRange(laserHitObjects);
         }
 
         lr.startWidth = laserWidth;
         lr.endWidth = laserWidth;
         lr.positionCount = Points.Count;
         lr.SetPositions(Points.ToArray());
+    }
+
+    private void StopRedundantParticles()
+    {
+        laserHitObjects.ForEach(hit =>
+        {
+            for (int i = 0; i < previousLaserHitObjects.Count; i++)
+            {
+                // Compare hash codes to see if the object exists in the previous list and new list
+                // If so, remove it from the list of previous hits. This will leave only the items
+                // that are not being targeted any more in the previous list. So stop particles in those
+                if (hit.GetHashCode() == previousLaserHitObjects[i].GetHashCode())
+                {
+                    previousLaserHitObjects.Remove(previousLaserHitObjects[i]);
+                }
+            }
+        });
+
+        // When all the copy items are removed, stop particles from the objects that are left
+        previousLaserHitObjects.ForEach(previousHit =>
+        {
+            if (previousHit != null)
+            {
+                StopLaserHitParticles(previousHit);
+            }
+        });
     }
 
     private void ReflectFurther(Vector2 origin, RaycastHit2D hitData)
@@ -97,6 +132,9 @@ public class LaserShoot : MonoBehaviour
         // Every other hit point
         if (nextHitData)
         {
+            // Add the game object that was hit by laser to list of objects
+            laserHitObjects.Add(nextHitData.collider.gameObject);
+            // The laser hit some collider which is not reflecting
             if (nextHitData.collider.tag == "Barrier")
             {
                 ReflectFurther(hitData.point, nextHitData);
@@ -105,37 +143,31 @@ public class LaserShoot : MonoBehaviour
             {
                 nextHitData.collider.GetComponent<ScrapMaterial>().CollectScrapMaterial(nextHitData.point, damage);
                 Points.Add(nextHitData.point);
-
-                // The tip of the laser is on the scrap material
-                if (lastCollectScrapMaterial && lastCollectScrapMaterial.GetHashCode() != nextHitData.collider.gameObject.GetHashCode())
-                {
-                    // Stop the previous one and reassign it to the current one
-                    lastCollectScrapMaterial.GetComponent<ScrapMaterial>().StopCollectScrapMaterial();
-                    lastCollectScrapMaterial = nextHitData.collider.gameObject;
-                }
-
-                lastCollectScrapMaterial = nextHitData.collider.gameObject;
             }
-            else if (hitData.collider.tag == "Breakable")
+            else if (nextHitData.collider.tag == "Breakable")
             {
-                nextHitData.collider.GetComponent<ScrapMaterial>().CollectScrapMaterial(nextHitData.point, damage);
+                nextHitData.collider.GetComponent<Breakable>().DamageBreakableObject(nextHitData.point, damage);
                 Points.Add(nextHitData.point);
-
-                hitData.collider.GetComponent<Breakable>().DamageBreakableObject(damage);
-            }
-        } else
-        {
-            inDirection = (hitData.point - origin).normalized;
-            newDirection = Vector2.Reflect(inDirection, hitData.normal);
-
-            Points.Add(hitData.point + newDirection * defaultRayDistance);
-
-            // No more reflections, laser to the void
-            if (lastCollectScrapMaterial)
+            } else
             {
-                lastCollectScrapMaterial.GetComponent<ScrapMaterial>().StopCollectScrapMaterial();
-                lastCollectScrapMaterial = null;
+                Points.Add(nextHitData.point);
             }
+        }
+    }
+
+    private void StopLaserHitParticles(GameObject hitObject)
+    {
+        switch (hitObject.tag)
+        {
+            // Moon, Satellite, Meteor, Astronaut 
+            case "Breakable":
+                hitObject.GetComponent<Breakable>().StopDamageBreakableObject();
+                break;
+            case "ScrapMaterial":
+                hitObject.GetComponent<ScrapMaterial>().StopCollectScrapMaterial();
+                break;
+            default:
+                break;
         }
     }
 }

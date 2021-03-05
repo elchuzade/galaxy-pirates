@@ -9,16 +9,19 @@ public class Breakable : MonoBehaviour
     [SerializeField] float healthPoints;
 
     GameObject breakParticles;
+    GameObject damageParticles;
 
     void Awake()
     {
-        // Find break particle that is a child of the breakable object
+        // Find break and damage particle that is a child of the breakable object
         breakParticles = transform.Find("BreakParticles").gameObject;
+        damageParticles = transform.Find("DamageParticles").gameObject;
     }
 
     void Start()
     {
         breakParticles.SetActive(false);
+        damageParticles.SetActive(false);
     }
 
     void Update()
@@ -28,8 +31,12 @@ public class Breakable : MonoBehaviour
 
     // @Access from LaserShoot
     // Call when laser is pointing at this breakable object
-    public void DamageBreakableObject(float damage)
+    public void DamageBreakableObject(Vector2 position, float damage)
     {
+        // Move collect particles to the point where laser touches the scrap material
+        damageParticles.SetActive(true);
+        damageParticles.transform.position = position;
+
         healthPoints -= damage;
         if (healthPoints <= 0)
         {
@@ -44,9 +51,19 @@ public class Breakable : MonoBehaviour
 
         } else
         {
+            damageParticles.SetActive(false);
             breakParticles.SetActive(true);
+            GetComponent<SpriteRenderer>().enabled = false;
+            GetComponent<CircleCollider2D>().enabled = false;
             StartCoroutine(DestroyBreakableObject());
         }
+    }
+
+    // @Access from LaserShoot
+    // Stop hit particle when laser is not focusing this breakable object anymore
+    public void StopDamageBreakableObject()
+    {
+        damageParticles.SetActive(false);
     }
 
     private IEnumerator DestroyBreakableObject()
