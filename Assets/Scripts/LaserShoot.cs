@@ -8,8 +8,6 @@ public class LaserShoot : MonoBehaviour
     [SerializeField] Material laserRed;
     GameObject shootTip;
 
-    const int Infinity = 9999;
-
     Vector2 startPoint;
     Vector2 direction;
 
@@ -61,7 +59,6 @@ public class LaserShoot : MonoBehaviour
             else if (hitData.collider.tag == "ScrapMaterial")
             {
                 hitData.collider.GetComponent<ScrapMaterial>().CollectScrapMaterial(hitData.point, damage);
-
                 Points.Add(hitData.point);
 
                 // The tip of the laser is on the scrap material
@@ -73,6 +70,12 @@ public class LaserShoot : MonoBehaviour
                 }
 
                 lastCollectScrapMaterial = hitData.collider.gameObject;
+            } else if (hitData.collider.tag == "Breakable")
+            {
+                hitData.collider.GetComponent<ScrapMaterial>().CollectScrapMaterial(hitData.point, damage);
+                Points.Add(hitData.point);
+
+                hitData.collider.GetComponent<Breakable>().DamageBreakableObject(damage);
             }
         }
 
@@ -101,7 +104,6 @@ public class LaserShoot : MonoBehaviour
             else if (nextHitData.collider.tag == "ScrapMaterial")
             {
                 nextHitData.collider.GetComponent<ScrapMaterial>().CollectScrapMaterial(nextHitData.point, damage);
-
                 Points.Add(nextHitData.point);
 
                 // The tip of the laser is on the scrap material
@@ -113,6 +115,13 @@ public class LaserShoot : MonoBehaviour
                 }
 
                 lastCollectScrapMaterial = nextHitData.collider.gameObject;
+            }
+            else if (hitData.collider.tag == "Breakable")
+            {
+                nextHitData.collider.GetComponent<ScrapMaterial>().CollectScrapMaterial(nextHitData.point, damage);
+                Points.Add(nextHitData.point);
+
+                hitData.collider.GetComponent<Breakable>().DamageBreakableObject(damage);
             }
         } else
         {

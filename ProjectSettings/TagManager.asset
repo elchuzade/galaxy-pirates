@@ -6,6 +6,7 @@ TagManager:
   tags:
   - ScrapMaterial
   - Barrier
+  - Breakable
   layers:
   - Default
   - TransparentFX
