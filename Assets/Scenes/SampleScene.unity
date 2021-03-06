@@ -253,6 +253,10 @@ MonoBehaviour:
   blendDistance: 0
   weight: 1
   sharedProfile: {fileID: 0}
+  m_PreviousLayer: 0
+  m_PreviousPriority: 0
+  m_InternalProfile: {fileID: 0}
+  m_TempColliders: []
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -329,7 +333,6 @@ MonoBehaviour:
   m_Cameras: []
   m_RendererIndex: -1
   m_VolumeLayerMask:
-    serializedVersion: 2
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_RenderPostProcessing: 1
@@ -690,7 +693,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shipName: 1
-  damage: 10
+  damage: 40
 --- !u!4 &1426951557
 Transform:
   m_ObjectHideFlags: 0
