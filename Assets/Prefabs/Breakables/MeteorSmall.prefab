@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3849817355176355077
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 738374281676106382}
+  m_Layer: 0
+  m_Name: MovePosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &738374281676106382
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3849817355176355077}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 9085598935507882746}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9085598935180288992
 GameObject:
   m_ObjectHideFlags: 0
@@ -4824,6 +4854,7 @@ GameObject:
   - component: {fileID: 9085598935507882745}
   - component: {fileID: 9085598935507882744}
   - component: {fileID: 9085598935507882751}
+  - component: {fileID: 1169164656}
   m_Layer: 0
   m_Name: MeteorSmall
   m_TagString: Breakable
@@ -4844,6 +4875,7 @@ Transform:
   m_Children:
   - {fileID: 9085598935180288993}
   - {fileID: 9085598935728068645}
+  - {fileID: 738374281676106382}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4927,8 +4959,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   breakableObjectName: 2
   healthPoints: 1000
-  meteorMedium: {fileID: 0}
-  meteorSmall: {fileID: 0}
+  coin: {fileID: 3853550951012848469, guid: 3a672f4a5efed468ab08951520cd771f, type: 3}
+  diamond: {fileID: 7051145812190331075, guid: 96443c225dba04bdd99925e475b7f32c, type: 3}
+--- !u!95 &1169164656
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9085598935507882750}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2a0d6b144168c4388b2a34c068fda3af, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &9085598935728068644
 GameObject:
   m_ObjectHideFlags: 0

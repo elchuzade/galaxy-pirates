@@ -8,6 +8,7 @@ TagManager:
   - Barrier
   - Breakable
   - MapLimit
+  - Absorber
   layers:
   - Default
   - TransparentFX

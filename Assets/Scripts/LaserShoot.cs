@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(LineRenderer))]
@@ -67,15 +66,23 @@ public class LaserShoot : MonoBehaviour
             if (hitData.collider.tag == "Barrier")
             {
                 ReflectFurther(startPoint, hitData);
-            } else if (hitData.collider.tag == "ScrapMaterial")
+            }
+            else if (hitData.collider.tag == "ScrapMaterial")
             {
                 hitData.collider.GetComponent<ScrapMaterial>().CollectScrapMaterial(hitData.point, damage);
                 Points.Add(hitData.point);
-            } else if (hitData.collider.tag == "Breakable")
+            }
+            else if (hitData.collider.tag == "Breakable")
             {
                 hitData.collider.GetComponent<Breakable>().DamageBreakableObject(hitData.point, damage);
                 Points.Add(hitData.point);
-            } else
+            }
+            else if (hitData.collider.tag == "Absorber")
+            {
+                hitData.collider.GetComponent<Absorber>().DamageAbsorberObject(hitData.point);
+                Points.Add(hitData.point);
+            }
+            else
             {
                 Points.Add(hitData.point);
             }
@@ -148,7 +155,13 @@ public class LaserShoot : MonoBehaviour
             {
                 nextHitData.collider.GetComponent<Breakable>().DamageBreakableObject(nextHitData.point, damage);
                 Points.Add(nextHitData.point);
-            } else
+            }
+            else if (nextHitData.collider.tag == "Absorber")
+            {
+                nextHitData.collider.GetComponent<Absorber>().DamageAbsorberObject(nextHitData.point);
+                Points.Add(nextHitData.point);
+            }
+            else
             {
                 Points.Add(nextHitData.point);
             }
@@ -162,6 +175,9 @@ public class LaserShoot : MonoBehaviour
             // Moon, Satellite, Meteor, Astronaut 
             case "Breakable":
                 hitObject.GetComponent<Breakable>().StopDamageBreakableObject();
+                break;
+            case "Absorber":
+                hitObject.GetComponent<Absorber>().StopDamageAbsorberObject();
                 break;
             case "ScrapMaterial":
                 hitObject.GetComponent<ScrapMaterial>().StopCollectScrapMaterial();

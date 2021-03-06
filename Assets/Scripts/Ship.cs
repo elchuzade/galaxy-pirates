@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
+using static GlobalVariables;
 
 public class Ship : MonoBehaviour
 {
-    public enum ShipName { ImperialFreighter, DeathStar, MillenniumFalcon, ImperialStarDestroyer, StingerMantis, RazorCrest };
     [SerializeField] ShipName shipName;
     [SerializeField] int damage;
 

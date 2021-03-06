@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3549578603767998003}
   - component: {fileID: 3549578603767998004}
   - component: {fileID: 3549578603767998005}
+  - component: {fileID: 388639067}
   m_Layer: 0
   m_Name: MeteorLarge
   m_TagString: Breakable
@@ -32,6 +33,7 @@ Transform:
   m_Children:
   - {fileID: 3549578605448661537}
   - {fileID: 3549578605242946755}
+  - {fileID: 2517318339866081749}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -115,9 +117,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   breakableObjectName: 2
   healthPoints: 1000
-  meteorMedium: {fileID: 1325150293399485538, guid: a1892760cf7a4446b812b9b8969e2183,
-    type: 3}
-  meteorSmall: {fileID: 0}
+  coin: {fileID: 3853550951012848469, guid: 3a672f4a5efed468ab08951520cd771f, type: 3}
+  diamond: {fileID: 7051145812190331075, guid: 96443c225dba04bdd99925e475b7f32c, type: 3}
+--- !u!95 &388639067
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3549578603767998006}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2a0d6b144168c4388b2a34c068fda3af, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3549578605242946756
 GameObject:
   m_ObjectHideFlags: 0
@@ -9684,3 +9704,33 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!1 &6157721677280602334
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2517318339866081749}
+  m_Layer: 0
+  m_Name: MovePosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2517318339866081749
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6157721677280602334}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3549578603767998002}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

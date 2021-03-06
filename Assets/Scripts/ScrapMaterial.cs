@@ -1,9 +1,10 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
+using static GlobalVariables;
 
 public class ScrapMaterial : MonoBehaviour
 {
-    public enum ScrapMaterialName { Gold, Silver, Bronze, Titanium, Iron, Copper, Aluminum };
+    LevelStatus levelStatus;
+
     [SerializeField] ScrapMaterialName scrapMaterialName;
 
     [SerializeField] float scrapMaterialHealthPoints;
@@ -11,6 +12,7 @@ public class ScrapMaterial : MonoBehaviour
 
     void Awake()
     {
+        levelStatus = FindObjectOfType<LevelStatus>();
         collectParticles = transform.Find("CollectParticles").gameObject;
     }
 
@@ -32,6 +34,7 @@ public class ScrapMaterial : MonoBehaviour
         if (scrapMaterialHealthPoints <= 0)
         {
             Destroy(gameObject);
+            levelStatus.CollectScrapMaterial(scrapMaterialName);
         }
     }
 

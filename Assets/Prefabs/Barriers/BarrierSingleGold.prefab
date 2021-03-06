@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 841548167722576542}
   - component: {fileID: 841548167722576536}
   m_Layer: 0
-  m_Name: GoldScrapMaterial (6)
+  m_Name: ScrapMaterial (6)
   m_TagString: ScrapMaterial
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9645,7 +9645,7 @@ GameObject:
   - component: {fileID: 841548168077742102}
   - component: {fileID: 841548168077742096}
   m_Layer: 0
-  m_Name: GoldScrapMaterial (5)
+  m_Name: ScrapMaterial (5)
   m_TagString: ScrapMaterial
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9769,7 +9769,7 @@ GameObject:
   - component: {fileID: 841548168468336407}
   - component: {fileID: 841548168468336401}
   m_Layer: 0
-  m_Name: GoldScrapMaterial (7)
+  m_Name: ScrapMaterial (7)
   m_TagString: ScrapMaterial
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9904,7 +9904,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 841548168479247296}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12, y: 0, z: 0}
+  m_LocalPosition: {x: -14, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 841548168648252437}
@@ -9927,7 +9927,7 @@ GameObject:
   - component: {fileID: 841548168648252438}
   - component: {fileID: 841548168648252432}
   m_Layer: 0
-  m_Name: GoldScrapMaterial (4)
+  m_Name: ScrapMaterial (4)
   m_TagString: ScrapMaterial
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10063,7 +10063,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 841548168879575638}
-  m_LocalRotation: {x: -0, y: -0, z: 0.66880774, w: 0.7434355}
+  m_LocalRotation: {x: 0, y: 0, z: 0.6688063, w: 0.7434367}
   m_LocalPosition: {x: 205, y: 253, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:

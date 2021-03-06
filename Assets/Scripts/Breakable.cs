@@ -1,32 +1,36 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using static GlobalVariables;
 
 public class Breakable : MonoBehaviour
 {
-    public enum BreakableObjectName { Moon, Satellite, Meteor, Astronaut };
+    
     [SerializeField] BreakableObjectName breakableObjectName;
     [SerializeField] float healthPoints;
 
+    // When the breakable object is destroyed
     GameObject breakParticles;
+    // When the laser is hitting the breakable object
     GameObject damageParticles;
+    Animator damageAnimator;
+
+    // Drop items to reward player for destroying the breakable object
+    [SerializeField] GameObject coin;
+    [SerializeField] GameObject diamond;
 
     void Awake()
     {
         // Find break and damage particle that is a child of the breakable object
         breakParticles = transform.Find("BreakParticles").gameObject;
         damageParticles = transform.Find("DamageParticles").gameObject;
+        damageAnimator = GetComponent<Animator>();
     }
 
     void Start()
     {
         breakParticles.SetActive(false);
         damageParticles.SetActive(false);
-    }
-
-    void Update()
-    {
-
+        damageAnimator.enabled = false;
     }
 
     // @Access from LaserShoot
@@ -38,6 +42,8 @@ public class Breakable : MonoBehaviour
 
         // Black hole does not get damaged
         damageParticles.transform.position = position;
+
+        damageAnimator.enabled = true;
 
         healthPoints -= damage;
         if (healthPoints <= 0)
@@ -79,11 +85,17 @@ public class Breakable : MonoBehaviour
     // Stop hit particle when laser is not focusing this breakable object anymore
     public void StopDamageBreakableObject()
     {
+        damageAnimator.enabled = false;
         damageParticles.SetActive(false);
     }
 
     private IEnumerator DestroyBreakableObject()
     {
+        // Drop a diamond as a reward for destroying the breakable object
+        GameObject diamondInstance = Instantiate(diamond, transform.position, Quaternion.identity);
+        diamondInstance.GetComponent<Droppable>().InitializeDroppable(
+            new Vector2(transform.position.x, transform.position.y - 1), 2);
+
         yield return new WaitForSeconds(2f);
 
         Destroy(gameObject);
