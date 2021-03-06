@@ -48,7 +48,7 @@ public class LaserShoot : MonoBehaviour
         laserWidth = ship.GetWidthFromDamage();
     }
 
-    void FixedUpdate()
+    void Update()
     {
         // Empty list of hitting objects, refill it all over again in each frame
         laserHitObjects.Clear();

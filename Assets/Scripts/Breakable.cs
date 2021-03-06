@@ -26,7 +26,7 @@ public class Breakable : MonoBehaviour
 
     void Update()
     {
-        
+
     }
 
     // @Access from LaserShoot
@@ -35,6 +35,8 @@ public class Breakable : MonoBehaviour
     {
         // Move collect particles to the point where laser touches the scrap material
         damageParticles.SetActive(true);
+
+        // Black hole does not get damaged
         damageParticles.transform.position = position;
 
         healthPoints -= damage;
@@ -48,15 +50,29 @@ public class Breakable : MonoBehaviour
     {
         if (breakableObjectName == BreakableObjectName.Meteor)
         {
-
-        } else
-        {
-            damageParticles.SetActive(false);
-            breakParticles.SetActive(true);
-            GetComponent<SpriteRenderer>().enabled = false;
+            // Meteor has 1 circle collider
             GetComponent<CircleCollider2D>().enabled = false;
-            StartCoroutine(DestroyBreakableObject());
         }
+        else if (breakableObjectName == BreakableObjectName.Moon)
+        {
+            // Moon has 1 circle collider
+            GetComponent<CircleCollider2D>().enabled = false;
+        } else if (breakableObjectName == BreakableObjectName.Satellite)
+        {
+            // Satellite has 2 box colliders
+            BoxCollider2D[] satelliteColliders = GetComponents<BoxCollider2D>();
+            satelliteColliders[0].enabled = false;
+            satelliteColliders[1].enabled = false;
+        } else if (breakableObjectName == BreakableObjectName.Astronaut)
+        {
+            // Astronaut has 1 capsule collider
+            GetComponent<CapsuleCollider2D>().enabled = false;
+        }
+        damageParticles.SetActive(false);
+        breakParticles.SetActive(true);
+        GetComponent<SpriteRenderer>().enabled = false;
+
+        StartCoroutine(DestroyBreakableObject());
     }
 
     // @Access from LaserShoot
