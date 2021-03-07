@@ -9581,7 +9581,7 @@ GameObject:
   - component: {fileID: 3477298788033481729}
   m_Layer: 0
   m_Name: EnemyShipOne
-  m_TagString: Untagged
+  m_TagString: EnemyShip
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9680,7 +9680,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26f97aa3d6d464366aa0fc3a70cedeb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  breakableObjectName: 0
+  breakableObjectName: 4
   healthPoints: 2000
   coin: {fileID: 3853550951012848469, guid: 3a672f4a5efed468ab08951520cd771f, type: 3}
   diamond: {fileID: 7051145812190331075, guid: 96443c225dba04bdd99925e475b7f32c, type: 3}
