@@ -11,6 +11,7 @@ public class LaserShoot : MonoBehaviour
     Vector2 direction;
 
     List<Vector3> Points;
+
     int defaultRayDistance = 10000;
     LineRenderer lr;
 
@@ -58,10 +59,11 @@ public class LaserShoot : MonoBehaviour
         Points.Add(startPoint);
 
         // First hit point
-        if (hitData)
+        if (hitData && hitData.collider.tag != "Ignore")
         {
             // Add the game object that was hit by laser to list of objects
             laserHitObjects.Add(hitData.collider.gameObject);
+
             // The laser hit some collider which is not reflecting
             if (hitData.collider.tag == "Barrier")
             {
@@ -80,6 +82,11 @@ public class LaserShoot : MonoBehaviour
             else if (hitData.collider.tag == "Absorber")
             {
                 hitData.collider.GetComponent<Absorber>().DamageAbsorberObject(hitData.point);
+                Points.Add(hitData.point);
+            }
+            else if (hitData.collider.tag == "EnemyShip")
+            {
+                hitData.collider.GetComponent<Breakable>().DamageBreakableObject(hitData.point, damage);
                 Points.Add(hitData.point);
             }
             else
@@ -137,10 +144,11 @@ public class LaserShoot : MonoBehaviour
         var nextHitData = Physics2D.Raycast(hitData.point + (newDirection * 0.0001f), newDirection * 100, defaultRayDistance);
 
         // Every other hit point
-        if (nextHitData)
-        {
+        if (nextHitData && nextHitData.collider.tag != "Ignore")
+        {    
             // Add the game object that was hit by laser to list of objects
             laserHitObjects.Add(nextHitData.collider.gameObject);
+
             // The laser hit some collider which is not reflecting
             if (nextHitData.collider.tag == "Barrier")
             {
@@ -161,6 +169,11 @@ public class LaserShoot : MonoBehaviour
                 nextHitData.collider.GetComponent<Absorber>().DamageAbsorberObject(nextHitData.point);
                 Points.Add(nextHitData.point);
             }
+            else if (nextHitData.collider.tag == "EnemyShip")
+            {
+                nextHitData.collider.GetComponent<Breakable>().DamageBreakableObject(nextHitData.point, damage);
+                Points.Add(nextHitData.point);
+            }
             else
             {
                 Points.Add(nextHitData.point);
@@ -172,7 +185,8 @@ public class LaserShoot : MonoBehaviour
     {
         switch (hitObject.tag)
         {
-            // Moon, Satellite, Meteor, Astronaut 
+            // Moon, Satellite, Meteor, Astronaut, EnemyShip
+            case "EnemyShip":
             case "Breakable":
                 hitObject.GetComponent<Breakable>().StopDamageBreakableObject();
                 break;

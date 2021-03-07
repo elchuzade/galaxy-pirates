@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class TouchRotate : MonoBehaviour
+public class TouchRotate : MonoBehaviour, IPointerDownHandler
 {
     // To indicate player touching the barrier
     bool touching;
@@ -13,7 +15,7 @@ public class TouchRotate : MonoBehaviour
 
     void Start()
     {
-        
+
     }
 
     void Update()
@@ -23,6 +25,11 @@ public class TouchRotate : MonoBehaviour
             // If player is touching the wall, rotate it based on his finger moves
             RotateWall();
         }
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        Debug.Log(gameObject.name + " Was Clicked.");
     }
 
     public void OnMouseDown()

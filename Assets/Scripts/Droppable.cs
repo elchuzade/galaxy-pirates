@@ -3,8 +3,9 @@ using static GlobalVariables;
 
 public class Droppable : MonoBehaviour
 {
-    
-    [SerializeField] DroppableItemType droppableItemType;
+    LevelStatus levelStatus;
+
+    [SerializeField] DroppableItemName droppableItemName;
 
     // Position of idle place when it is dropped
     Vector3 dropToPosition;
@@ -18,6 +19,11 @@ public class Droppable : MonoBehaviour
     bool reachedDropPosition; 
 
     void Awake()
+    {
+        levelStatus = FindObjectOfType<LevelStatus>();
+    }
+
+    void Start()
     {
         SetCollectToPosition();
     }
@@ -36,7 +42,7 @@ public class Droppable : MonoBehaviour
 
     private void SetCollectToPosition()
     {
-        if (droppableItemType == DroppableItemType.Coin)
+        if (droppableItemName == DroppableItemName.Coin)
         {
             // A coin icon on Top Right to move dropped coins toward
             Vector3 canvasCollectPosition = GameObject.Find("Coins").transform.Find("Coin").gameObject.transform.position;
@@ -46,11 +52,11 @@ public class Droppable : MonoBehaviour
                 canvasCollectPosition.y,
                 canvasCollectPosition.z);
         }
-        else if (droppableItemType == DroppableItemType.Key)
+        else if (droppableItemName == DroppableItemName.Key)
         {
             // handle key stuff
         }
-        else if (droppableItemType == DroppableItemType.Diamond)
+        else if (droppableItemName == DroppableItemName.Diamond)
         {
             // A diamond icon on Top Center to move dropped diamonds toward
             collectToPosition = GameObject.Find("Diamonds").transform.Find("Diamond").gameObject.transform.position;
@@ -73,6 +79,13 @@ public class Droppable : MonoBehaviour
 
         if (transform.position == collectToPosition)
         {
+            if (droppableItemName == DroppableItemName.Coin)
+            {
+                levelStatus.CollectCoins(1);
+            } else if (droppableItemName == DroppableItemName.Diamond)
+            {
+                levelStatus.CollectDiamonds(1);
+            }
             Destroy(gameObject);
         }
     }

@@ -11,7 +11,6 @@ public class TriggerAnimation : MonoBehaviour
 
     public void Trigger()
     {
-        Debug.Log("test");
         anim.SetTrigger("Start");
     }
 }

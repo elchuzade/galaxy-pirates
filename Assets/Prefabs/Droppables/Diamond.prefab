@@ -94,4 +94,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 311fc4054a51743bdb30bd743a15ba9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  droppableItemType: 2
+  droppableItemName: 2

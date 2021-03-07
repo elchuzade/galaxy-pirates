@@ -2,6 +2,7 @@
 using UnityEngine;
 using static GlobalVariables;
 
+[RequireComponent(typeof(Animator))]
 public class Breakable : MonoBehaviour
 {
     
@@ -72,6 +73,10 @@ public class Breakable : MonoBehaviour
         } else if (breakableObjectName == BreakableObjectName.Astronaut)
         {
             // Astronaut has 1 capsule collider
+            GetComponent<CapsuleCollider2D>().enabled = false;
+        } else if (breakableObjectName == BreakableObjectName.EnemyShip)
+        {
+            // Enemy Ship has 1 capsule collider
             GetComponent<CapsuleCollider2D>().enabled = false;
         }
         damageParticles.SetActive(false);

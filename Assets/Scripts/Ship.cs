@@ -4,7 +4,7 @@ using static GlobalVariables;
 public class Ship : MonoBehaviour
 {
     [SerializeField] ShipName shipName;
-    [SerializeField] int damage;
+    [SerializeField] float damage;
 
     Weapon weapon;
 
@@ -25,11 +25,11 @@ public class Ship : MonoBehaviour
 
     public float GetWidthFromDamage()
     {
-        return damage / 10;
+        return damage / 2;
     }
 
     public float GetDamage()
     {
-        return (float)damage;
+        return damage;
     }
 }

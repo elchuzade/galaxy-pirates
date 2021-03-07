@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using static GlobalVariables;
 
 public class LevelStatus : MonoBehaviour
@@ -9,11 +10,18 @@ public class LevelStatus : MonoBehaviour
     GameObject bronzeIcon;
     GameObject brassIcon;
     GameObject titaniumIcon;
+    GameObject diamondsIcon;
+    GameObject coinsIcon;
+    Text diamondsText;
+    Text coinsText;
+
     int gold;
     int silver;
     int bronze;
     int brass;
     int titanium;
+    int diamonds;
+    int coins;
 
     void Awake()
     {
@@ -24,16 +32,43 @@ public class LevelStatus : MonoBehaviour
         bronzeIcon = materials.Find("Bronze").gameObject;
         brassIcon = materials.Find("Brass").gameObject;
         titaniumIcon = materials.Find("Titanium").gameObject;
+
+        Transform diamondsParent = GameObject.Find("Canvas").transform.Find("Scoreboard").Find("Diamonds");
+        Transform coinsParent = GameObject.Find("Canvas").transform.Find("Scoreboard").Find("Coins");
+
+        diamondsIcon = diamondsParent.Find("Diamond").gameObject;
+        coinsIcon = coinsParent.Find("Coin").gameObject;
+        diamondsText = diamondsParent.Find("DiamondCount").GetComponent<Text>();
+        coinsText = coinsParent.Find("CoinCount").GetComponent<Text>();
     }
 
     void Start()
     {
-        
+        SetScoreboardValues();
     }
 
-    void Update()
+    // @Access from droppable diamonds
+    // Increment when it reaches the canvas diaond icon
+    public void CollectDiamonds(int count)
     {
-        
+        diamonds += count;
+        diamondsIcon.GetComponent<TriggerAnimation>().Trigger();
+        SetScoreboardValues();
+    }
+
+    // @Access from droppable coins
+    // Increment when it reaches the canvas coin icon
+    public void CollectCoins(int count)
+    {
+        coins += count;
+        coinsIcon.GetComponent<TriggerAnimation>().Trigger();
+        SetScoreboardValues();
+    }
+
+    private void SetScoreboardValues()
+    {
+        diamondsText.text = diamonds.ToString();
+        coinsText.text = coins.ToString();
     }
 
     // @Access from scrap material script

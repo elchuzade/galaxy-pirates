@@ -9,6 +9,9 @@ TagManager:
   - Breakable
   - MapLimit
   - Absorber
+  - EnemyShip
+  - Ignore
+  - BlackHole
   layers:
   - Default
   - TransparentFX

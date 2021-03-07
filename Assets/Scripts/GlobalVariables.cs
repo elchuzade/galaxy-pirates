@@ -2,9 +2,9 @@
 {
     public enum ScrapMaterialName { Gold, Silver, Bronze, Titanium, Brass };
 
-    public enum BreakableObjectName { Moon, Satellite, Meteor, Astronaut };
+    public enum BreakableObjectName { Moon, Satellite, Meteor, Astronaut, EnemyShip };
 
-    public enum DroppableItemType { Coin, Key, Diamond }
+    public enum DroppableItemName { Coin, Key, Diamond }
 
     public enum Direction { Clockwise, CounterClockwise }
 
