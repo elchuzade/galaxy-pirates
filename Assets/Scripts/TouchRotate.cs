@@ -1,8 +1,6 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.EventSystems;
 
-public class TouchRotate : MonoBehaviour, IPointerDownHandler
+public class TouchRotate : MonoBehaviour
 {
     // To indicate player touching the barrier
     bool touching;
@@ -12,6 +10,8 @@ public class TouchRotate : MonoBehaviour, IPointerDownHandler
     float initWallAngle;
     // Coordinates at which the rotation has started.
     Vector2 initMouseDirection;
+    // Distance from center of wall that is touchable by player to rotate wall
+    int touchRadius = 80;
 
     void Start()
     {
@@ -25,38 +25,21 @@ public class TouchRotate : MonoBehaviour, IPointerDownHandler
             // If player is touching the wall, rotate it based on his finger moves
             RotateWall();
         }
-    }
 
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        Debug.Log(gameObject.name + " Was Clicked.");
-    }
-
-    public void OnMouseDown()
-    {
-        // If player has touhed the wall and the ball is not launched and the hint is not used
-        // Make the color of the wall a little darker
-        GetComponent<SpriteRenderer>().color = new Color32(200, 200, 200, 255);
-
-        touching = true;
-        //if (PlayerPrefs.GetInt("Haptics") == 1)
-        //{
-        //    MMVibrationManager.Haptic(HapticTypes.LightImpact);
-        //}
-        // Save current direction of the touch of the player fingers to rotate in proportion to the finger movement
-        initMouseDirection = GetDirection();
-        // Set the angle of the wall at the time of touching to add to the rotation, to keep it proportional
-        initWallAngle = transform.rotation.eulerAngles.z;
-    }
-
-    public void OnMouseUp()
-    {
-        // When the finger is released and ball is not launched and hint is not used
-
-        // Make the wall color back to light
-        GetComponent<SpriteRenderer>().color = new Color32(150, 150, 150, 255);
-
-        touching = false;
+        if (Input.GetMouseButtonDown(0) && !touching)
+        {
+            if (Vector2.Distance(transform.position, Input.mousePosition) < touchRadius)
+            {
+                touching = true;
+                transform.Find("WallReflect").GetComponent<SpriteRenderer>().color = new Color32(200, 200, 200, 255);
+                initMouseDirection = GetDirection();
+                initWallAngle = transform.rotation.eulerAngles.z;
+            }
+        } else if (Input.GetMouseButtonUp(0) && touching)
+        {
+            touching = false;
+            transform.Find("WallReflect").GetComponent<SpriteRenderer>().color = new Color32(150, 150, 150, 255);
+        }
     }
 
     private void RotateWall()
