@@ -1,10 +1,7 @@
-<<<<<<< HEAD
 ﻿using UnityEngine;
-=======
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
->>>>>>> 816affc3e34c5113f716160086d58b269c43980f
 using UnityEngine.UI;
 
 public class MapsStatus : MonoBehaviour
@@ -67,14 +64,6 @@ public class MapsStatus : MonoBehaviour
         SetPlanetValues();
     }
 
-<<<<<<< HEAD
-=======
-    void Update()
-    {
-        
-    }
-
->>>>>>> 816affc3e34c5113f716160086d58b269c43980f
     private void SetPlayerValues()
     {
         diamonds = player.diamonds;
@@ -96,11 +85,7 @@ public class MapsStatus : MonoBehaviour
 
     private void SetPlanetValues()
     {
-<<<<<<< HEAD
         PlanetItem currentPlanet = planets[planetIndex].GetComponent<PlanetItem>();
-=======
-        Planet currentPlanet = planets[planetIndex].GetComponent<Planet>();
->>>>>>> 816affc3e34c5113f716160086d58b269c43980f
 
         (int, int, int, int, int, int, int) planetData = currentPlanet.getData();
         planetCoin = planetData.Item1;
