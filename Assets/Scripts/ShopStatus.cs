@@ -28,9 +28,14 @@ public class ShopStatus : MonoBehaviour
     // To get values from ship, initially first ship will be shown.
     // Required for swipe function to disable arrows when first or last are shown
     int shipIndex = 0;
+    // This is index of laser page. Not current laser
+    int laserIndex = 0;
 
-    [SerializeField] GameObject leftArrow;
-    [SerializeField] GameObject rightArrow;
+    [SerializeField] GameObject shipLeftArrow;
+    [SerializeField] GameObject shipRightArrow;
+
+    [SerializeField] GameObject laserLeftArrow;
+    [SerializeField] GameObject laserRightArrow;
 
     // Scoreboard
     [Header("Scoreboard")]
@@ -66,6 +71,7 @@ public class ShopStatus : MonoBehaviour
         laserScrollbar.GetComponent<Scrollbar>().value = (float)(player.currentLaserIndex / 4) / 4;
 
         shipIndex = player.currentShipIndex;
+        laserIndex = player.currentLaserIndex / 4;
 
         SetScoreboardValues();
 
@@ -73,6 +79,7 @@ public class ShopStatus : MonoBehaviour
         SetLaserValues();
 
         shipScrollbar.GetComponent<Scrollbar>().onValueChanged.AddListener(value => SwipeShip(value));
+        laserScrollbar.GetComponent<Scrollbar>().onValueChanged.AddListener(value => SwipeLaser(value));
     }
 
     private void SetScoreboardValues()
@@ -85,6 +92,12 @@ public class ShopStatus : MonoBehaviour
     {
         shipIndex = (int)(value * 5);
         SetShipValues();
+    }
+
+    public void SwipeLaser(float value)
+    {
+        laserIndex = (int)(value * 4);
+        SetLaserValues();
     }
 
     private void SetShipValues()
@@ -105,22 +118,20 @@ public class ShopStatus : MonoBehaviour
         shipTitaniumText.text = shipTitanium.ToString();
 
         // Set arrows
+        shipLeftArrow.GetComponent<Button>().interactable = true;
+        shipRightArrow.GetComponent<Button>().interactable = true;
+        shipLeftArrow.GetComponent<Image>().color = new Color32(161, 208, 35, 255);
+        shipRightArrow.GetComponent<Image>().color = new Color32(161, 208, 35, 255);
+
         if (shipIndex == 0)
         {
-            leftArrow.GetComponent<Button>().interactable = false;
-            leftArrow.GetComponent<Image>().color = new Color32(100, 100, 100, 255);
+            shipLeftArrow.GetComponent<Button>().interactable = false;
+            shipLeftArrow.GetComponent<Image>().color = new Color32(100, 100, 100, 255);
         }
         else if (shipIndex == ships.Length - 1)
         {
-            rightArrow.GetComponent<Button>().interactable = false;
-            rightArrow.GetComponent<Image>().color = new Color32(100, 100, 100, 255);
-        }
-        else
-        {
-            leftArrow.GetComponent<Button>().interactable = true;
-            rightArrow.GetComponent<Button>().interactable = true;
-            leftArrow.GetComponent<Image>().color = new Color32(161, 208, 35, 255);
-            rightArrow.GetComponent<Image>().color = new Color32(161, 208, 35, 255);
+            shipRightArrow.GetComponent<Button>().interactable = false;
+            shipRightArrow.GetComponent<Image>().color = new Color32(100, 100, 100, 255);
         }
         // Set unlock or play button
         if (player.currentShipIndex == shipIndex)
@@ -158,6 +169,22 @@ public class ShopStatus : MonoBehaviour
 
     private void SetLaserValues()
     {
+        // Set arrows
+        laserLeftArrow.GetComponent<Button>().interactable = true;
+        laserRightArrow.GetComponent<Button>().interactable = true;
+        laserLeftArrow.GetComponent<Image>().color = new Color32(161, 208, 35, 255);
+        laserRightArrow.GetComponent<Image>().color = new Color32(161, 208, 35, 255);
+
+        if (laserIndex == 0)
+        {
+            laserLeftArrow.GetComponent<Button>().interactable = false;
+            laserLeftArrow.GetComponent<Image>().color = new Color32(100, 100, 100, 255);
+        }
+        else if (laserIndex == lasers.Length / 4 - 1)
+        {
+            laserRightArrow.GetComponent<Button>().interactable = false;
+            laserRightArrow.GetComponent<Image>().color = new Color32(100, 100, 100, 255);
+        }
         for (int i = 0; i < lasers.Length; i++)
         {
             if (player.allLasers[i] == 1)
@@ -171,7 +198,7 @@ public class ShopStatus : MonoBehaviour
         }
     }
 
-    public void ClickLeftArrow()
+    public void ClickShipLeftArrow()
     {
         if (shipIndex > 0)
         {
@@ -181,12 +208,32 @@ public class ShopStatus : MonoBehaviour
         }
     }
 
-    public void ClickRightArrow()
+    public void ClickShipRightArrow()
     {
         if (shipIndex < ships.Length - 1)
         {
             shipIndex++;
             shipScrollbar.GetComponent<Scrollbar>().value = (float)shipIndex / 5;
+            SetShipValues();
+        }
+    }
+
+    public void ClickLaserLeftArrow()
+    {
+        if (laserIndex > 0)
+        {
+            laserIndex--;
+            laserScrollbar.GetComponent<Scrollbar>().value = (float)laserIndex / 4;
+            SetLaserValues();
+        }
+    }
+
+    public void ClickLaserRightArrow()
+    {
+        if (laserIndex < lasers.Length / 4 - 1)
+        {
+            laserIndex++;
+            laserScrollbar.GetComponent<Scrollbar>().value = (float)laserIndex / 4;
             SetShipValues();
         }
     }
