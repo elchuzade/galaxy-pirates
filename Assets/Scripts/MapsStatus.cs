@@ -6,15 +6,8 @@ public class MapsStatus : MonoBehaviour
     Navigator navigator;
     Player player;
 
-    // Unlock the planet
-    [SerializeField] GameObject unlockButton;
-    // Play the first level of the planet
-    [SerializeField] GameObject playButton;
     // Conquered is the status of previous planets
     [SerializeField] GameObject conqueredButton;
-    // To hide all rewards when map is already unlocked
-    [SerializeField] GameObject mapReward;
-
     // Scrollbar handle to control its value
     [SerializeField] GameObject planetScrollbar;
     // All planets from scroll content
@@ -31,24 +24,6 @@ public class MapsStatus : MonoBehaviour
     [Header("Scoreboard")]
     [SerializeField] Text diamondsText;
     [SerializeField] Text coinsText;
-
-    int planetCoin;
-    int planetDiamond;
-    int planetGold;
-    int planetSilver;
-    int planetBronze;
-    int planetBrass;
-    int planetTitanium;
-
-    // Values of reward for planet completion
-    [Header("Map Reward")]
-    [SerializeField] Text planetCoinText;
-    [SerializeField] Text planetDiamondText;
-    [SerializeField] Text planetGoldText;
-    [SerializeField] Text planetSilverText;
-    [SerializeField] Text planetBronzeText;
-    [SerializeField] Text planetBrassText;
-    [SerializeField] Text planetTitaniumText;
 
     void Awake()
     {
@@ -92,21 +67,6 @@ public class MapsStatus : MonoBehaviour
         PlanetItem currentPlanet = planets[planetIndex].GetComponent<PlanetItem>();
 
         (int, int, int, int, int, int, int) planetData = currentPlanet.getData();
-        planetCoin = planetData.Item1;
-        planetDiamond = planetData.Item2;
-        planetGold = planetData.Item3;
-        planetSilver = planetData.Item4;
-        planetBronze = planetData.Item5;
-        planetBrass = planetData.Item6;
-        planetTitanium = planetData.Item7;
-
-        planetCoinText.text = planetCoin.ToString();
-        planetDiamondText.text = planetDiamond.ToString();
-        planetGoldText.text = planetGold.ToString();
-        planetSilverText.text = planetSilver.ToString();
-        planetBronzeText.text = planetBronze.ToString();
-        planetBrassText.text = planetBrass.ToString();
-        planetTitaniumText.text = planetTitanium.ToString();
 
         // Set arrows
         if (planetIndex == 0)
@@ -126,34 +86,22 @@ public class MapsStatus : MonoBehaviour
             leftArrow.GetComponent<Image>().color = new Color32(161, 208, 35, 255);
             rightArrow.GetComponent<Image>().color = new Color32(161, 208, 35, 255);
         }
-        // Set unlock or play button
+        // Set conquered buttons on some planets
         if (player.currentPlanetIndex == planetIndex)
         {
-            // Current map must show play button
+            // Current map must be little different
             conqueredButton.SetActive(false);
-            playButton.SetActive(true);
-            unlockButton.SetActive(false);
-            // Hide reward, as it is already received
-            mapReward.SetActive(false);
         } else
         {
-            // Map is either conquered or locked
+            // Map is either conquered or not
             if (player.allPlanets[planetIndex] == 0)
             {
-                // Planet is Locked
+                // Planet is not conquered
                 conqueredButton.SetActive(false);
-                playButton.SetActive(false);
-                unlockButton.SetActive(true);
-                // Show reward, as it is not received yet
-                mapReward.SetActive(true);
             } else
             {
                 // Planet is conquered
                 conqueredButton.SetActive(true);
-                playButton.SetActive(false);
-                unlockButton.SetActive(false);
-                // Hide reward, as it is already received
-                mapReward.SetActive(false);
             }
         }
     }
@@ -181,33 +129,5 @@ public class MapsStatus : MonoBehaviour
     public void ClickBackButton()
     {
         navigator.LoadMainScene();
-    }
-
-    public void ClickUnlockButton()
-    {
-        // Try unlocking the Planet, if successful, then receive reward and hide symbols
-        // To unlock a planet all previous levels need be completed
-        if (player.nextLevelIndex > levelsPerPlanet * planetIndex)
-        {
-            player.coins += planetCoin;
-            player.diamonds += planetDiamond;
-            player.gold += planetGold;
-            player.silver += planetSilver;
-            player.bronze += planetBronze;
-            player.brass += planetBrass;
-            player.titanium += planetTitanium;
-
-            player.allPlanets[planetIndex] = 1;
-            player.currentPlanetIndex = planetIndex;
-            player.SavePlayer();
-            // Update canvas after chaning player values
-            SetPlanetValues();
-        }
-
-    }
-
-    public void ClickPlayButton()
-    {
-        navigator.LoadNextLevel(player.nextLevelIndex);
     }
 }

@@ -24,9 +24,9 @@ public class Navigator : MonoBehaviour
         SceneManager.LoadScene("ShopScene");
     }
 
-    public void LoadMaps()
+    public void LoadPlanets()
     {
-        SceneManager.LoadScene("MapsScene");
+        SceneManager.LoadScene("PlanetsScene");
     }
 
     public void LoadNextLevel(int nextLevelIndex)

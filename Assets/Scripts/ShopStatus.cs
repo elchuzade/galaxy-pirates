@@ -111,11 +111,39 @@ public class ShopStatus : MonoBehaviour
         shipBrass = shipData.Item4;
         shipTitanium = shipData.Item5;
 
-        shipGoldText.text = shipGold.ToString();
-        shipSilverText.text = shipSilver.ToString();
-        shipBronzeText.text = shipBronze.ToString();
-        shipBrassText.text = shipBrass.ToString();
-        shipTitaniumText.text = shipTitanium.ToString();
+        shipGoldText.text = player.gold.ToString() + " / " + shipGold.ToString();
+        shipSilverText.text = player.silver.ToString() + " / " + shipSilver.ToString();
+        shipBronzeText.text = player.bronze.ToString() + " / " + shipBronze.ToString();
+        shipBrassText.text = player.brass.ToString() + " / " + shipBrass.ToString();
+        shipTitaniumText.text = player.titanium.ToString() + " / " + shipTitanium.ToString();
+
+        shipGoldText.color = new Color32(255, 255, 255, 255);
+        shipSilverText.color = new Color32(255, 255, 255, 255);
+        shipBronzeText.color = new Color32(255, 255, 255, 255);
+        shipBrassText.color = new Color32(255, 255, 255, 255);
+        shipTitaniumText.color = new Color32(255, 255, 255, 255);
+
+        // Change colors to green if you ahve sufficient
+        if (shipGold <= player.gold)
+        {
+            shipGoldText.color = new Color32(161, 208, 35, 255);
+        }
+        if (shipSilver <= player.silver)
+        {
+            shipSilverText.color = new Color32(161, 208, 35, 255);
+        }
+        if (shipBronze <= player.bronze)
+        {
+            shipBronzeText.color = new Color32(161, 208, 35, 255);
+        }
+        if (shipBrass <= player.brass)
+        {
+            shipBrassText.color = new Color32(161, 208, 35, 255);
+        }
+        if (shipTitanium <= player.titanium)
+        {
+            shipTitaniumText.color = new Color32(161, 208, 35, 255);
+        }
 
         // Set arrows
         shipLeftArrow.GetComponent<Button>().interactable = true;

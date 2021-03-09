@@ -115,9 +115,9 @@ public class MainStatus : MonoBehaviour
         navigator.LoadShop();
     }
 
-    public void ClickMapsButton()
+    public void ClickPlanetsButton()
     {
-        navigator.LoadMaps();
+        navigator.LoadPlanets();
     }
 
     public void ClickHapticsButton()

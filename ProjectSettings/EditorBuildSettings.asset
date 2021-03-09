@@ -9,11 +9,11 @@ EditorBuildSettings:
     path: Assets/Scenes/MainScene.unity
     guid: 0db73f1f6b1eb42f888f7e2f20f7eac0
   - enabled: 1
-    path: Assets/Scenes/MapsScene.unity
-    guid: 5324abb50b3874b69817a259606a8929
-  - enabled: 1
     path: Assets/Scenes/ShopScene.unity
     guid: 4ea06aa85a4334037ab1660c05ddd92a
+  - enabled: 1
+    path: Assets/Scenes/PlanetsScene.unity
+    guid: 5324abb50b3874b69817a259606a8929
   - enabled: 1
     path: Assets/Scenes/Level-1.unity
     guid: 2cda990e2423bbf4892e6590ba056729

@@ -487,7 +487,7 @@ PrefabInstance:
     - target: {fileID: 4064396145138762945, guid: ef7577cc9e735434c98f74b09b99104e,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ClickMapsButton
+      value: ClickPlanetsButton
       objectReference: {fileID: 0}
     - target: {fileID: 6224856406453054232, guid: ef7577cc9e735434c98f74b09b99104e,
         type: 3}
