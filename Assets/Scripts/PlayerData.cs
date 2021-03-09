@@ -19,11 +19,16 @@ public class PlayerData
     public int upgradeIndex = 0;
     public List<int> upgradePrice = new List<int>() { 100, 200, 300, 400, 500 };
     public List<int> upgradePower = new List<int>() { 10, 20, 30, 40, 50 };
+    public List<int> allPlanets = new List<int>() { 1, 0, 0, 0, 0 };
+    public List<int> allShips = new List<int>() { 1, 0, 0, 0, 0, 0 };
+    public List<int> allLasers = new List<int>() { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+    public int currentLaserIndex = 0;
+    public int currentShipIndex = 0;
+    public int currentPlanetIndex = 0;
 
     public PlayerData (Player player)
     {
         coins = player.coins;
-        diamonds = player.diamonds;
         diamonds = player.diamonds;
         gold = player.gold;
         silver = player.silver;
@@ -38,5 +43,11 @@ public class PlayerData
         upgradeIndex = player.upgradeIndex;
         upgradePrice = player.upgradePrice;
         upgradePower = player.upgradePower;
+        allPlanets = player.allPlanets;
+        allLasers = player.allLasers;
+        allShips = player.allShips;
+        currentLaserIndex = player.currentLaserIndex;
+        currentShipIndex = player.currentShipIndex;
+        currentPlanetIndex = player.currentPlanetIndex;
     }
 }

@@ -18,6 +18,12 @@ public class Player : MonoBehaviour
     public int upgradeIndex = 0;
     public List<int> upgradePrice = new List<int>() { 100, 200, 300, 400, 500 };
     public List<int> upgradePower = new List<int>() { 10, 20, 30, 40, 50 };
+    public List<int> allPlanets = new List<int>() { 1, 0, 0, 0, 0 };
+    public List<int> allShips = new List<int>() { 1, 0, 0, 0, 0, 0 };
+    public List<int> allLasers = new List<int>() { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+    public int currentLaserIndex = 0;
+    public int currentShipIndex = 0;
+    public int currentPlanetIndex = 0;
 
     void Awake()
     {
@@ -44,11 +50,11 @@ public class Player : MonoBehaviour
         coins = 44444;
         playerName = "";
         diamonds = 555;
-        gold = 555;
-        silver = 555;
-        bronze = 555;
-        brass = 555;
-        titanium = 555;
+        gold = 9555;
+        silver = 9555;
+        bronze = 9555;
+        brass = 9555;
+        titanium = 9555;
         power = 100;
         nextLevelIndex = 1;
         playerName = "";
@@ -57,6 +63,12 @@ public class Player : MonoBehaviour
         upgradeIndex = 0;
         upgradePrice = new List<int>() { 100, 200, 300, 400, 500 };
         upgradePower = new List<int>() { 10, 20, 30, 40, 50 };
+        allPlanets = new List<int>() { 1, 1, 1, 0, 0 };
+        allShips = new List<int>() { 1, 1, 0, 1, 0, 0 };
+        allLasers = new List<int>() { 1, 0, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0 };
+        currentLaserIndex = 13;
+        currentShipIndex = 3;
+        currentPlanetIndex = 2;
 
         SaveSystem.SavePlayer(this);
     }
@@ -85,5 +97,11 @@ public class Player : MonoBehaviour
         upgradeIndex = data.upgradeIndex;
         upgradePrice = data.upgradePrice;
         upgradePower = data.upgradePower;
+        allPlanets = data.allPlanets;
+        allLasers = data.allLasers;
+        allShips = data.allShips;
+        currentLaserIndex = data.currentLaserIndex;
+        currentShipIndex = data.currentShipIndex;
+        currentPlanetIndex = data.currentPlanetIndex;
     }
 }
