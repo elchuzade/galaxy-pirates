@@ -121,18 +121,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &168349706 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2292659903519211544, guid: d21883c616b6b46beba96aad6878abfd,
-    type: 3}
-  m_PrefabInstance: {fileID: 339161678}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &339161678
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -772,18 +760,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d21883c616b6b46beba96aad6878abfd, type: 3}
---- !u!1 &339161679 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 718725761421834382, guid: d21883c616b6b46beba96aad6878abfd,
-    type: 3}
-  m_PrefabInstance: {fileID: 339161678}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &339161680 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7936611302856809012, guid: d21883c616b6b46beba96aad6878abfd,
-    type: 3}
-  m_PrefabInstance: {fileID: 339161678}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &339161681 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8643012162093714720, guid: d21883c616b6b46beba96aad6878abfd,
@@ -891,36 +867,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &537213490 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1375845509360797525, guid: d21883c616b6b46beba96aad6878abfd,
-    type: 3}
-  m_PrefabInstance: {fileID: 339161678}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &561048148 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5592304002758095782, guid: d21883c616b6b46beba96aad6878abfd,
     type: 3}
   m_PrefabInstance: {fileID: 339161678}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &609289584 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6604879274176181565, guid: d21883c616b6b46beba96aad6878abfd,
-    type: 3}
-  m_PrefabInstance: {fileID: 339161678}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &673769653 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1352608498452404219, guid: d21883c616b6b46beba96aad6878abfd,
@@ -933,18 +885,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 339161678}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1111357851 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4758996195039918798, guid: d21883c616b6b46beba96aad6878abfd,
-    type: 3}
-  m_PrefabInstance: {fileID: 339161678}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1124241239 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6221918612971336110, guid: d21883c616b6b46beba96aad6878abfd,
@@ -963,27 +903,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1325687430 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 184889360679594430, guid: d21883c616b6b46beba96aad6878abfd,
-    type: 3}
-  m_PrefabInstance: {fileID: 339161678}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1411733224 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1918774232582969699, guid: d21883c616b6b46beba96aad6878abfd,
-    type: 3}
-  m_PrefabInstance: {fileID: 339161678}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1416847807 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1791022576883191160, guid: d21883c616b6b46beba96aad6878abfd,
     type: 3}
   m_PrefabInstance: {fileID: 339161678}
   m_PrefabAsset: {fileID: 0}
@@ -1059,18 +981,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1549364217 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1253571453891245397, guid: d21883c616b6b46beba96aad6878abfd,
-    type: 3}
-  m_PrefabInstance: {fileID: 339161678}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1642712412 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1756127481742522189, guid: d21883c616b6b46beba96aad6878abfd,
@@ -1187,18 +1097,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 339161678}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1995855024 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3928415753038124437, guid: d21883c616b6b46beba96aad6878abfd,
-    type: 3}
-  m_PrefabInstance: {fileID: 339161678}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &2793451793723515503
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1264,7 +1162,7 @@ PrefabInstance:
     - target: {fileID: 2793451793652991839, guid: f5aab9cd9328c40fabca88b1748a22ed,
         type: 3}
       propertyPath: m_Name
-      value: 'MapsStatus '
+      value: 'PlanetsStatus '
       objectReference: {fileID: 0}
     - target: {fileID: 2793451794146772142, guid: f5aab9cd9328c40fabca88b1748a22ed,
         type: 3}
@@ -1280,7 +1178,7 @@ PrefabInstance:
         type: 3}
       propertyPath: mapReward
       value: 
-      objectReference: {fileID: 1325687430}
+      objectReference: {fileID: 0}
     - target: {fileID: 2793451794146772142, guid: f5aab9cd9328c40fabca88b1748a22ed,
         type: 3}
       propertyPath: scrollbar
@@ -1290,7 +1188,7 @@ PrefabInstance:
         type: 3}
       propertyPath: playButton
       value: 
-      objectReference: {fileID: 339161680}
+      objectReference: {fileID: 0}
     - target: {fileID: 2793451794146772142, guid: f5aab9cd9328c40fabca88b1748a22ed,
         type: 3}
       propertyPath: rightArrow
@@ -1305,17 +1203,17 @@ PrefabInstance:
         type: 3}
       propertyPath: unlockButton
       value: 
-      objectReference: {fileID: 339161679}
+      objectReference: {fileID: 0}
     - target: {fileID: 2793451794146772142, guid: f5aab9cd9328c40fabca88b1748a22ed,
         type: 3}
       propertyPath: planetCoinText
       value: 
-      objectReference: {fileID: 1416847807}
+      objectReference: {fileID: 0}
     - target: {fileID: 2793451794146772142, guid: f5aab9cd9328c40fabca88b1748a22ed,
         type: 3}
       propertyPath: planetGoldText
       value: 
-      objectReference: {fileID: 1549364217}
+      objectReference: {fileID: 0}
     - target: {fileID: 2793451794146772142, guid: f5aab9cd9328c40fabca88b1748a22ed,
         type: 3}
       propertyPath: conqueredButton
@@ -1325,7 +1223,7 @@ PrefabInstance:
         type: 3}
       propertyPath: planetBrassText
       value: 
-      objectReference: {fileID: 168349706}
+      objectReference: {fileID: 0}
     - target: {fileID: 2793451794146772142, guid: f5aab9cd9328c40fabca88b1748a22ed,
         type: 3}
       propertyPath: planetScrollbar
@@ -1335,22 +1233,22 @@ PrefabInstance:
         type: 3}
       propertyPath: planetBronzeText
       value: 
-      objectReference: {fileID: 1111357851}
+      objectReference: {fileID: 0}
     - target: {fileID: 2793451794146772142, guid: f5aab9cd9328c40fabca88b1748a22ed,
         type: 3}
       propertyPath: planetSilverText
       value: 
-      objectReference: {fileID: 609289584}
+      objectReference: {fileID: 0}
     - target: {fileID: 2793451794146772142, guid: f5aab9cd9328c40fabca88b1748a22ed,
         type: 3}
       propertyPath: planetDiamondText
       value: 
-      objectReference: {fileID: 1995855024}
+      objectReference: {fileID: 0}
     - target: {fileID: 2793451794146772142, guid: f5aab9cd9328c40fabca88b1748a22ed,
         type: 3}
       propertyPath: planetTitaniumText
       value: 
-      objectReference: {fileID: 537213490}
+      objectReference: {fileID: 0}
     - target: {fileID: 2793451794146772142, guid: f5aab9cd9328c40fabca88b1748a22ed,
         type: 3}
       propertyPath: planets.Array.data[0]

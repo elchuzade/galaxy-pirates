@@ -13,4 +13,6 @@
     public enum ShipName { ImperialFreighter, DeathStar, MillenniumFalcon, ImperialStarDestroyer, StingerMantis, RazorCrest };
 
     public enum PlanetName { Saturn, Earth, Jupiter, Mars, Venus };
+
+    public enum ChestColors { Blue, Purple, Red };
 }
