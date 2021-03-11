@@ -14,7 +14,7 @@ public class LaserItem : MonoBehaviour
     [SerializeField] GameObject diamondIcon;
     [SerializeField] GameObject coinIcon;
 
-    void Start()
+    void Awake()
     {
         priceText.text = laserPrice.ToString();
         selectedFrame.SetActive(false);

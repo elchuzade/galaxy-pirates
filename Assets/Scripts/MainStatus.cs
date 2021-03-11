@@ -7,7 +7,6 @@ public class MainStatus : MonoBehaviour
     Player player;
 
     GameObject hapticsButton;
-    GameObject soundsButton;
     GameObject upgradeButton;
 
     Text diamondsText;
@@ -21,14 +20,6 @@ public class MainStatus : MonoBehaviour
     Text upgradePrice;
     Text upgradePower;
 
-    int gold;
-    int silver;
-    int bronze;
-    int brass;
-    int titanium;
-    int diamonds;
-    int coins;
-    int power;
     int upgradeIndex;
 
     void Awake()
@@ -36,20 +27,19 @@ public class MainStatus : MonoBehaviour
         navigator = FindObjectOfType<Navigator>();
 
         hapticsButton = GameObject.Find("HapticsButton");
-        soundsButton = GameObject.Find("SoundsButton");
         upgradeButton = GameObject.Find("UpgradeButton");
 
-        Transform diamondsParent = GameObject.Find("Canvas").transform.Find("Scoreboard").Find("Diamonds");
+        Transform diamondsParent = GameObject.Find("MainCanvas").transform.Find("Scoreboard").Find("Diamonds");
         diamondsText = diamondsParent.Find("DiamondCount").GetComponent<Text>();
-        Transform coinsParent = GameObject.Find("Canvas").transform.Find("Scoreboard").Find("Coins");
+        Transform coinsParent = GameObject.Find("MainCanvas").transform.Find("Scoreboard").Find("Coins");
         coinsText = coinsParent.Find("CoinCount").GetComponent<Text>();
-        Transform materials = GameObject.Find("Canvas").transform.Find("Scoreboard").Find("Materials");
+        Transform materials = GameObject.Find("MainCanvas").transform.Find("Materials");
         goldText = materials.Find("GoldCount").GetComponent<Text>();
         silverText = materials.Find("SilverCount").GetComponent<Text>();
         bronzeText = materials.Find("BronzeCount").GetComponent<Text>();
         brassText = materials.Find("BrassCount").GetComponent<Text>();
         titaniumText = materials.Find("TitaniumCount").GetComponent<Text>();
-        powerText = GameObject.Find("Canvas").transform.Find("Power").Find("PowerCount").GetComponent<Text>();
+        powerText = GameObject.Find("MainCanvas").transform.Find("Power").Find("PowerCount").GetComponent<Text>();
 
         upgradePrice = upgradeButton.transform.Find("Price").Find("PriceCount").GetComponent<Text>();
         upgradePower = upgradeButton.transform.Find("Power").Find("PowerCount").GetComponent<Text>();
@@ -61,8 +51,8 @@ public class MainStatus : MonoBehaviour
         player.ResetPlayer();
         player.LoadPlayer();
 
-        SetPlayerValues();
         SetScoreboardValues();
+        SetButtonInitialState();
         SetUpgradeButton();
     }
 
@@ -76,28 +66,16 @@ public class MainStatus : MonoBehaviour
         }
     }
 
-    private void SetPlayerValues()
-    {
-        diamonds = player.diamonds;
-        coins = player.coins;
-        gold = player.gold;
-        silver = player.silver;
-        bronze = player.bronze;
-        brass = player.brass;
-        titanium = player.titanium;
-        power = player.power;
-    }
-
     private void SetScoreboardValues()
     {
-        diamondsText.text = diamonds.ToString();
-        coinsText.text = coins.ToString();
-        goldText.text = gold.ToString();
-        silverText.text = silver.ToString();
-        bronzeText.text = bronze.ToString();
-        brassText.text = brass.ToString();
-        titaniumText.text = titanium.ToString();
-        powerText.text = power.ToString();
+        diamondsText.text = player.diamonds.ToString();
+        coinsText.text = player.coins.ToString();
+        goldText.text = player.gold.ToString();
+        silverText.text = player.silver.ToString();
+        bronzeText.text = player.bronze.ToString();
+        brassText.text = player.brass.ToString();
+        titaniumText.text = player.titanium.ToString();
+        powerText.text = player.power.ToString();
     }
 
     public void ClickUpgradeButton()
@@ -107,6 +85,8 @@ public class MainStatus : MonoBehaviour
 
     public void ClickPlayButton()
     {
+        Debug.Log("player.nextLevelIndex");
+        Debug.Log(player.nextLevelIndex);
         navigator.LoadNextLevel(player.nextLevelIndex);
     }
 
@@ -138,25 +118,7 @@ public class MainStatus : MonoBehaviour
         }
     }
 
-    public void ClickSoundsButton()
-    {
-        if (PlayerPrefs.GetInt("Sounds") == 1)
-        {
-            // Set button state to disabled
-            soundsButton.transform.Find("Disabled").gameObject.SetActive(true);
-            // If sounds are turned on => turn them off
-            PlayerPrefs.SetInt("Sounds", 0);
-        }
-        else
-        {
-            // Set button state to enabled
-            soundsButton.transform.Find("Disabled").gameObject.SetActive(false);
-            // If sounds are turned off => turn them on
-            PlayerPrefs.SetInt("Sounds", 1);
-        }
-    }
-
-    // Set initial states of haptics and sounds buttons based on player prefs
+    // Set initial states of haptics button based on player prefs
     private void SetButtonInitialState()
     {
         if (PlayerPrefs.GetInt("Haptics") == 1)
@@ -166,14 +128,6 @@ public class MainStatus : MonoBehaviour
         else
         {
             hapticsButton.transform.Find("Disabled").gameObject.SetActive(true);
-        }
-        if (PlayerPrefs.GetInt("Sounds") == 1)
-        {
-            soundsButton.transform.Find("Disabled").gameObject.SetActive(false);
-        }
-        else
-        {
-            soundsButton.transform.Find("Disabled").gameObject.SetActive(true);
         }
     }
 }

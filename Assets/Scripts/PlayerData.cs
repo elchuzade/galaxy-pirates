@@ -25,6 +25,9 @@ public class PlayerData
     public int currentLaserIndex = 0;
     public int currentShipIndex = 0;
     public int currentPlanetIndex = 0;
+    public int redChestCount = 0;
+    public int purpleChestCount = 0;
+    public int blueChestCount = 0;
 
     public PlayerData (Player player)
     {
@@ -49,5 +52,8 @@ public class PlayerData
         currentLaserIndex = player.currentLaserIndex;
         currentShipIndex = player.currentShipIndex;
         currentPlanetIndex = player.currentPlanetIndex;
+        redChestCount = player.redChestCount;
+        purpleChestCount = player.purpleChestCount;
+        blueChestCount = player.blueChestCount;
     }
 }

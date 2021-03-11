@@ -48,8 +48,8 @@ public class ShopStatus : MonoBehaviour
     int shipBrass;
     int shipTitanium;
 
-    // Values of reward for ship completion
-    [Header("Map Reward")]
+    // Price of building ship
+    [Header("Ship Price")]
     [SerializeField] Text shipGoldText;
     [SerializeField] Text shipSilverText;
     [SerializeField] Text shipBronzeText;
@@ -64,7 +64,7 @@ public class ShopStatus : MonoBehaviour
     void Start()
     {
         player = FindObjectOfType<Player>();
-        //player.ResetPlayer();
+        player.ResetPlayer();
         player.LoadPlayer();
 
         shipScrollbar.GetComponent<Scrollbar>().value = (float)player.currentShipIndex / 5;

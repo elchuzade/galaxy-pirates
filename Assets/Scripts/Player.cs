@@ -24,6 +24,9 @@ public class Player : MonoBehaviour
     public int currentLaserIndex = 0;
     public int currentShipIndex = 0;
     public int currentPlanetIndex = 0;
+    public int redChestCount = 0;
+    public int purpleChestCount = 0;
+    public int blueChestCount = 0;
 
     void Awake()
     {
@@ -69,8 +72,11 @@ public class Player : MonoBehaviour
         currentLaserIndex = 13;
         currentShipIndex = 3;
         currentPlanetIndex = 2;
+        redChestCount = 3;
+        purpleChestCount = 1;
+        blueChestCount = 1;
 
-        SaveSystem.SavePlayer(this);
+    SaveSystem.SavePlayer(this);
     }
 
     public void LoadPlayer()
@@ -103,5 +109,8 @@ public class Player : MonoBehaviour
         currentLaserIndex = data.currentLaserIndex;
         currentShipIndex = data.currentShipIndex;
         currentPlanetIndex = data.currentPlanetIndex;
+        redChestCount = data.redChestCount;
+        purpleChestCount = data.purpleChestCount;
+        blueChestCount = data.blueChestCount;
     }
 }
