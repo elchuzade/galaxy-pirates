@@ -72,9 +72,9 @@ public class Player : MonoBehaviour
         currentLaserIndex = 13;
         currentShipIndex = 3;
         currentPlanetIndex = 2;
-        redChestCount = 3;
-        purpleChestCount = 1;
-        blueChestCount = 1;
+        redChestCount = 0;
+        purpleChestCount = 0;
+        blueChestCount = 0;
 
     SaveSystem.SavePlayer(this);
     }

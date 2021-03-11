@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.UI;
 using static GlobalVariables;
 
@@ -38,7 +39,7 @@ public class ChestsStatus : MonoBehaviour
     void Start()
     {
         player = FindObjectOfType<Player>();
-        player.ResetPlayer();
+        //player.ResetPlayer();
         player.LoadPlayer();
 
         SetPlayerChests();
@@ -166,7 +167,38 @@ public class ChestsStatus : MonoBehaviour
                 SelectBlueChest();
                 break;
         }
+        chestClosedView.SetActive(true);
+        StartCoroutine(OpenChestOpenedView(2));
         player.SavePlayer();
         SetPlayerChests();
+    }
+
+    // Open chest reward view after the animation of opening chest is complete
+    private IEnumerator OpenChestOpenedView(float time)
+    {
+        yield return new WaitForSeconds(time);
+
+        chestClosedView.SetActive(false);
+        chestOpenedView.SetActive(true);
+        StartCoroutine(CloseChestOpenedView(2));
+    }
+
+    // Automatically close the reward from chest after 2 seconds
+    private IEnumerator CloseChestOpenedView(float time)
+    {
+        yield return new WaitForSeconds(time);
+
+        ClickCloseChestOpenedView();
+    }
+
+    // On tap anywehre on the screen close the reward from chest immediately
+    public void ClickCloseChestOpenedView()
+    {
+        chestOpenedView.SetActive(false);
+    }
+
+    public void ClickBackButton()
+    {
+        navigator.LoadMainScene();
     }
 }

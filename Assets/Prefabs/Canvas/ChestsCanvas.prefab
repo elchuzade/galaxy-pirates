@@ -177,6 +177,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PopupViewChestClosed
       objectReference: {fileID: 0}
+    - target: {fileID: 6788442342459282777, guid: eb3fc58e3bb8f424fb0cf33b2eb5be71,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb3fc58e3bb8f424fb0cf33b2eb5be71, type: 3}
 --- !u!1 &6788442344126495079 stripped
@@ -445,7 +450,27 @@ PrefabInstance:
     - target: {fileID: 2201249098100011080, guid: 51038eca1eaeb4b8aa56962879199047,
         type: 3}
       propertyPath: m_Name
-      value: PopupViewChestOpen
+      value: PopupViewChestOpened
+      objectReference: {fileID: 0}
+    - target: {fileID: 2201249098100011080, guid: 51038eca1eaeb4b8aa56962879199047,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9118839185253875944, guid: 51038eca1eaeb4b8aa56962879199047,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5949718839546081052}
+    - target: {fileID: 9118839185253875944, guid: 51038eca1eaeb4b8aa56962879199047,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ClickCloseChestOpenedView
+      objectReference: {fileID: 0}
+    - target: {fileID: 9118839185253875944, guid: 51038eca1eaeb4b8aa56962879199047,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 51038eca1eaeb4b8aa56962879199047, type: 3}
@@ -1031,6 +1056,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5837366850837830820, guid: 1099995a098d1451f8321c33ee4869f4,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5949718839546081052}
+    - target: {fileID: 5837366850837830820, guid: 1099995a098d1451f8321c33ee4869f4,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ClickBackButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 5837366850837830820, guid: 1099995a098d1451f8321c33ee4869f4,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1099995a098d1451f8321c33ee4869f4, type: 3}

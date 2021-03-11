@@ -7,18 +7,20 @@ public class MainStatus : MonoBehaviour
     Player player;
 
     GameObject hapticsButton;
-    GameObject upgradeButton;
 
-    Text diamondsText;
-    Text coinsText;
-    Text goldText;
-    Text silverText;
-    Text bronzeText;
-    Text brassText;
-    Text titaniumText;
-    Text powerText;
-    Text upgradePrice;
-    Text upgradePower;
+    [SerializeField] Text diamondsText;
+    [SerializeField] Text coinsText;
+    [SerializeField] Text goldText;
+    [SerializeField] Text silverText;
+    [SerializeField] Text bronzeText;
+    [SerializeField] Text brassText;
+    [SerializeField] Text titaniumText;
+    [SerializeField] Text powerText;
+    [SerializeField] Text upgradePrice;
+    [SerializeField] Text upgradePower;
+
+    // To run animation and to show notification sign
+    [SerializeField] GameObject chestButton;
 
     int upgradeIndex;
 
@@ -27,33 +29,32 @@ public class MainStatus : MonoBehaviour
         navigator = FindObjectOfType<Navigator>();
 
         hapticsButton = GameObject.Find("HapticsButton");
-        upgradeButton = GameObject.Find("UpgradeButton");
-
-        Transform diamondsParent = GameObject.Find("MainCanvas").transform.Find("Scoreboard").Find("Diamonds");
-        diamondsText = diamondsParent.Find("DiamondCount").GetComponent<Text>();
-        Transform coinsParent = GameObject.Find("MainCanvas").transform.Find("Scoreboard").Find("Coins");
-        coinsText = coinsParent.Find("CoinCount").GetComponent<Text>();
-        Transform materials = GameObject.Find("MainCanvas").transform.Find("Materials");
-        goldText = materials.Find("GoldCount").GetComponent<Text>();
-        silverText = materials.Find("SilverCount").GetComponent<Text>();
-        bronzeText = materials.Find("BronzeCount").GetComponent<Text>();
-        brassText = materials.Find("BrassCount").GetComponent<Text>();
-        titaniumText = materials.Find("TitaniumCount").GetComponent<Text>();
-        powerText = GameObject.Find("MainCanvas").transform.Find("Power").Find("PowerCount").GetComponent<Text>();
-
-        upgradePrice = upgradeButton.transform.Find("Price").Find("PriceCount").GetComponent<Text>();
-        upgradePower = upgradeButton.transform.Find("Power").Find("PowerCount").GetComponent<Text>();
     }
 
     void Start()
     {
         player = FindObjectOfType<Player>();
-        player.ResetPlayer();
+        //player.ResetPlayer();
         player.LoadPlayer();
 
         SetScoreboardValues();
         SetButtonInitialState();
         SetUpgradeButton();
+
+        SetChestButton();
+    }
+
+    private void SetChestButton()
+    {
+        if (player.redChestCount > 0 || player.purpleChestCount > 0 || player.blueChestCount > 0)
+        {
+            chestButton.transform.Find("ChestNotification").gameObject.SetActive(true);
+            chestButton.GetComponent<Animator>().Play("ChestShake");
+        } else
+        {
+            chestButton.transform.Find("ChestNotification").gameObject.SetActive(false);
+            chestButton.GetComponent<Animator>().enabled = false;
+        }
     }
 
     private void SetUpgradeButton()
@@ -88,6 +89,11 @@ public class MainStatus : MonoBehaviour
         Debug.Log("player.nextLevelIndex");
         Debug.Log(player.nextLevelIndex);
         navigator.LoadNextLevel(player.nextLevelIndex);
+    }
+
+    public void ClickChestButton()
+    {
+        navigator.LoadChests();
     }
 
     public void ClickShopButton()

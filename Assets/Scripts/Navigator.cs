@@ -29,6 +29,11 @@ public class Navigator : MonoBehaviour
         SceneManager.LoadScene("PlanetsScene");
     }
 
+    public void LoadChests()
+    {
+        SceneManager.LoadScene("ChestsScene");
+    }
+
     public void LoadNextLevel(int nextLevelIndex)
     {
         Debug.Log("Loading Level Scene");
