@@ -15,4 +15,6 @@
     public enum PlanetName { Saturn, Earth, Jupiter, Mars, Venus };
 
     public enum ChestColors { Blue, Purple, Red };
+
+    public enum Rewards { Diamond, Coin, Gold, Silver, Bronze, Brass, Titanium };
 }

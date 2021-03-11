@@ -11,8 +11,11 @@ public class ChestsStatus : MonoBehaviour
 
     [SerializeField] int redChestBasePrice;
     [SerializeField] int purpleChestBasePrice;
+
+    // Reward views
     [SerializeField] GameObject chestClosedView;
     [SerializeField] GameObject chestOpenedView;
+
     [SerializeField] Text diamondsText;
     [SerializeField] Text coinsText;
 
@@ -32,8 +35,8 @@ public class ChestsStatus : MonoBehaviour
 
         chestClosedView.transform.localScale = new Vector3(1, 1, 1);
         chestClosedView.SetActive(false);
-        chestOpenedView.transform.localScale = new Vector3(1, 1, 1);
-        chestOpenedView.SetActive(false);
+
+        HideAllChestsInChestClosedView();
     }
 
     void Start()
@@ -45,6 +48,13 @@ public class ChestsStatus : MonoBehaviour
         SetPlayerChests();
         SetScoreboardValues();
         SetChestPrices();
+    }
+
+    private void HideAllChestsInChestClosedView()
+    {
+        chestClosedView.transform.Find("RedChest").gameObject.SetActive(false);
+        chestClosedView.transform.Find("PurpleChest").gameObject.SetActive(false);
+        chestClosedView.transform.Find("BlueChest").gameObject.SetActive(false);
     }
 
     private void SetScoreboardValues()
@@ -168,33 +178,27 @@ public class ChestsStatus : MonoBehaviour
                 break;
         }
         chestClosedView.SetActive(true);
-        StartCoroutine(OpenChestOpenedView(2));
+        // Show only selected chest instead of all three chests
+        SetChestColorInChestClosedView();
         player.SavePlayer();
         SetPlayerChests();
     }
 
-    // Open chest reward view after the animation of opening chest is complete
-    private IEnumerator OpenChestOpenedView(float time)
+    private void SetChestColorInChestClosedView()
     {
-        yield return new WaitForSeconds(time);
-
-        chestClosedView.SetActive(false);
-        chestOpenedView.SetActive(true);
-        StartCoroutine(CloseChestOpenedView(2));
-    }
-
-    // Automatically close the reward from chest after 2 seconds
-    private IEnumerator CloseChestOpenedView(float time)
-    {
-        yield return new WaitForSeconds(time);
-
-        ClickCloseChestOpenedView();
-    }
-
-    // On tap anywehre on the screen close the reward from chest immediately
-    public void ClickCloseChestOpenedView()
-    {
-        chestOpenedView.SetActive(false);
+        switch (selectedChestColor)
+        {
+            case ChestColors.Red:
+                chestClosedView.transform.Find("RedChest").gameObject.SetActive(true);
+                break;
+            case ChestColors.Purple:
+                chestClosedView.transform.Find("PurpleChest").gameObject.SetActive(true);
+                break;
+            case ChestColors.Blue:
+            default:
+                chestClosedView.transform.Find("BlueChest").gameObject.SetActive(true);
+                break;
+        }
     }
 
     public void ClickBackButton()

@@ -252,7 +252,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2008715311475300931}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -522,6 +522,28 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &7979768983836277118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2201249098100011080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c0aae576dbc1481caf024699e466e8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  redChest: {fileID: 0}
+  purpleChest: {fileID: 0}
+  blueChest: {fileID: 0}
+  diamondReward: {fileID: 3839124712436413302}
+  coinReward: {fileID: 7412317138982277252}
+  goldReward: {fileID: 4127002273254809149}
+  silverReward: {fileID: 148700902922270097}
+  bronzeReward: {fileID: 1043889735023950326}
+  brassReward: {fileID: 7024469949049194554}
+  titaniumReward: {fileID: 3112437330657245486}
 --- !u!114 &9118839185253875944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -565,12 +587,12 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: 
+      - m_Target: {fileID: 7979768983836277118}
+        m_MethodName: CloseRewardView
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -640,8 +662,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 3980492816987532018}
   - {fileID: 1105407019315742876}
+  - {fileID: 3980492816987532018}
   - {fileID: 6083802015720320578}
   - {fileID: 7636996624736530419}
   - {fileID: 8492847116829170270}
@@ -833,7 +855,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2008715311475300931}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
