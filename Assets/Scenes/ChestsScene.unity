@@ -238,6 +238,16 @@ PrefabInstance:
       propertyPath: titaniumChance
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 5949718839546081052, guid: bf6a4ddb991a3497f9bbc9b2a20d1d70,
+        type: 3}
+      propertyPath: redChestBasePrice
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5949718839546081052, guid: bf6a4ddb991a3497f9bbc9b2a20d1d70,
+        type: 3}
+      propertyPath: purpleChestBasePrice
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6760310869671804120, guid: bf6a4ddb991a3497f9bbc9b2a20d1d70,
         type: 3}
       propertyPath: chestColor

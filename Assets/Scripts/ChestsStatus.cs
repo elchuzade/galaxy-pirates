@@ -187,12 +187,12 @@ public class ChestsStatus : MonoBehaviour
         switch (selectedChestColor)
         {
             case ChestColors.Red:
-                player.coins -= redChestBasePrice;
+                player.diamonds -= redChestBasePrice;
                 player.redChestCount++;
                 SelectRedChest();
                 break;
             case ChestColors.Purple:
-                player.coins -= purpleChestBasePrice;
+                player.diamonds -= purpleChestBasePrice;
                 player.purpleChestCount++;
                 SelectPurpleChest();
                 break;
