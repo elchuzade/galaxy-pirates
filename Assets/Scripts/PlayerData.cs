@@ -7,8 +7,8 @@ public class PlayerData
     public int coins = 0;
     public int diamonds = 0;
     public int gold = 0;
-    public int silver = 0;
-    public int bronze = 0;
+    public int aluminum = 0;
+    public int copper = 0;
     public int brass = 0;
     public int titanium = 0;
     public int power = 100;
@@ -34,8 +34,8 @@ public class PlayerData
         coins = player.coins;
         diamonds = player.diamonds;
         gold = player.gold;
-        silver = player.silver;
-        bronze = player.bronze;
+        aluminum = player.aluminum;
+        copper = player.copper;
         brass = player.brass;
         titanium = player.titanium;
         power = player.power;

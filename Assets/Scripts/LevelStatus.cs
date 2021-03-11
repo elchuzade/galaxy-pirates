@@ -6,8 +6,8 @@ public class LevelStatus : MonoBehaviour
 {
     // Scoreboard gold scrap material icon
     GameObject goldIcon;
-    GameObject silverIcon;
-    GameObject bronzeIcon;
+    GameObject aluminumIcon;
+    GameObject copperIcon;
     GameObject brassIcon;
     GameObject titaniumIcon;
     GameObject diamondsIcon;
@@ -16,8 +16,8 @@ public class LevelStatus : MonoBehaviour
     Text coinsText;
 
     int gold;
-    int silver;
-    int bronze;
+    int aluminum;
+    int copper;
     int brass;
     int titanium;
     int diamonds;
@@ -28,8 +28,8 @@ public class LevelStatus : MonoBehaviour
         // materials inside scoreboard inside canvas
         Transform materials = GameObject.Find("Canvas").transform.Find("Scoreboard").Find("Materials");
         goldIcon = materials.Find("Gold").gameObject;
-        silverIcon = materials.Find("Silver").gameObject;
-        bronzeIcon = materials.Find("Bronze").gameObject;
+        aluminumIcon = materials.Find("Aluminum").gameObject;
+        copperIcon = materials.Find("Copper").gameObject;
         brassIcon = materials.Find("Brass").gameObject;
         titaniumIcon = materials.Find("Titanium").gameObject;
 
@@ -83,13 +83,13 @@ public class LevelStatus : MonoBehaviour
                 goldIcon.GetComponent<TriggerAnimation>().Trigger();
                 gold++;
                 break;
-            case ScrapMaterialName.Silver:
-                silverIcon.GetComponent<TriggerAnimation>().Trigger();
-                silver++;
+            case ScrapMaterialName.Aluminum:
+                aluminumIcon.GetComponent<TriggerAnimation>().Trigger();
+                aluminum++;
                 break;
-            case ScrapMaterialName.Bronze:
-                bronzeIcon.GetComponent<TriggerAnimation>().Trigger();
-                bronze++;
+            case ScrapMaterialName.Copper:
+                copperIcon.GetComponent<TriggerAnimation>().Trigger();
+                copper++;
                 break;
             case ScrapMaterialName.Brass:
                 brassIcon.GetComponent<TriggerAnimation>().Trigger();

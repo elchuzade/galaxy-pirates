@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6245900483542202189}
   - component: {fileID: 101434242132725151}
   m_Layer: 0
-  m_Name: SilverReward
+  m_Name: AluminumReward
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -86,7 +86,7 @@ GameObject:
   - component: {fileID: 6583869559761243394}
   - component: {fileID: 1645895389728366418}
   m_Layer: 0
-  m_Name: BronzeReward
+  m_Name: CopperReward
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -540,10 +540,11 @@ MonoBehaviour:
   diamondReward: {fileID: 3839124712436413302}
   coinReward: {fileID: 7412317138982277252}
   goldReward: {fileID: 4127002273254809149}
-  silverReward: {fileID: 148700902922270097}
-  bronzeReward: {fileID: 1043889735023950326}
+  aluminumReward: {fileID: 148700902922270097}
+  copperReward: {fileID: 1043889735023950326}
   brassReward: {fileID: 7024469949049194554}
   titaniumReward: {fileID: 3112437330657245486}
+  rewardCountText: {fileID: 377284482433171309}
 --- !u!114 &9118839185253875944
 MonoBehaviour:
   m_ObjectHideFlags: 0

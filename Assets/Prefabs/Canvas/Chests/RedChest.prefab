@@ -7,6 +7,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1523842297813340494, guid: 12341f1f20f2f48e887bc836baff99a0,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SelectRedChest
+      objectReference: {fileID: 0}
+    - target: {fileID: 1523842297813340494, guid: 12341f1f20f2f48e887bc836baff99a0,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 3199196525306062590, guid: 12341f1f20f2f48e887bc836baff99a0,
         type: 3}
       propertyPath: m_Pivot.x
@@ -90,12 +100,12 @@ PrefabInstance:
     - target: {fileID: 3199196525306062590, guid: 12341f1f20f2f48e887bc836baff99a0,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 186
       objectReference: {fileID: 0}
     - target: {fileID: 3199196525306062590, guid: 12341f1f20f2f48e887bc836baff99a0,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 327
       objectReference: {fileID: 0}
     - target: {fileID: 3199196525306062590, guid: 12341f1f20f2f48e887bc836baff99a0,
         type: 3}
@@ -132,6 +142,101 @@ PrefabInstance:
         type: 3}
       propertyPath: chestColor
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9139939602196646556, guid: 12341f1f20f2f48e887bc836baff99a0,
+        type: 3}
+      propertyPath: coinChance
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9139939602196646556, guid: 12341f1f20f2f48e887bc836baff99a0,
+        type: 3}
+      propertyPath: goldChance
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9139939602196646556, guid: 12341f1f20f2f48e887bc836baff99a0,
+        type: 3}
+      propertyPath: brassChance
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9139939602196646556, guid: 12341f1f20f2f48e887bc836baff99a0,
+        type: 3}
+      propertyPath: coinBaseMax
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 9139939602196646556, guid: 12341f1f20f2f48e887bc836baff99a0,
+        type: 3}
+      propertyPath: coinBaseMin
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 9139939602196646556, guid: 12341f1f20f2f48e887bc836baff99a0,
+        type: 3}
+      propertyPath: goldBaseMax
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 9139939602196646556, guid: 12341f1f20f2f48e887bc836baff99a0,
+        type: 3}
+      propertyPath: goldBaseMin
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 9139939602196646556, guid: 12341f1f20f2f48e887bc836baff99a0,
+        type: 3}
+      propertyPath: brassBaseMax
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 9139939602196646556, guid: 12341f1f20f2f48e887bc836baff99a0,
+        type: 3}
+      propertyPath: brassBaseMin
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 9139939602196646556, guid: 12341f1f20f2f48e887bc836baff99a0,
+        type: 3}
+      propertyPath: copperBaseMax
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 9139939602196646556, guid: 12341f1f20f2f48e887bc836baff99a0,
+        type: 3}
+      propertyPath: copperBaseMin
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 9139939602196646556, guid: 12341f1f20f2f48e887bc836baff99a0,
+        type: 3}
+      propertyPath: diamondChance
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9139939602196646556, guid: 12341f1f20f2f48e887bc836baff99a0,
+        type: 3}
+      propertyPath: diamondBaseMax
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 9139939602196646556, guid: 12341f1f20f2f48e887bc836baff99a0,
+        type: 3}
+      propertyPath: diamondBaseMin
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 9139939602196646556, guid: 12341f1f20f2f48e887bc836baff99a0,
+        type: 3}
+      propertyPath: titaniumChance
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9139939602196646556, guid: 12341f1f20f2f48e887bc836baff99a0,
+        type: 3}
+      propertyPath: aluminumBaseMax
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 9139939602196646556, guid: 12341f1f20f2f48e887bc836baff99a0,
+        type: 3}
+      propertyPath: aluminumBaseMin
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 9139939602196646556, guid: 12341f1f20f2f48e887bc836baff99a0,
+        type: 3}
+      propertyPath: titaniumBaseMax
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 9139939602196646556, guid: 12341f1f20f2f48e887bc836baff99a0,
+        type: 3}
+      propertyPath: titaniumBaseMin
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 12341f1f20f2f48e887bc836baff99a0, type: 3}

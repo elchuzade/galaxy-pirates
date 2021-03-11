@@ -27,7 +27,8 @@ public class ChestsStatus : MonoBehaviour
     [SerializeField] GameObject watchButton;
     [SerializeField] GameObject openButton;
 
-    ChestColors selectedChestColor;
+    // Green is just to ignore all actual colors. Like default
+    ChestColors selectedChestColor = ChestColors.None;
 
     void Awake()
     {
@@ -48,6 +49,9 @@ public class ChestsStatus : MonoBehaviour
         SetPlayerChests();
         SetScoreboardValues();
         SetChestPrices();
+
+        // Make autoselect always in blue chest
+        SelectBlueChest();
     }
 
     private void HideAllChestsInChestClosedView()
@@ -85,15 +89,22 @@ public class ChestsStatus : MonoBehaviour
 
     public void SelectBlueChest()
     {
-        // Check if you can open the chest, or watch the ad
-        Debug.Log("selecting blue chest");
-        // If there are no blue chests, make play button as watch ad button
-        selectedChestColor = ChestColors.Blue;
+        // Do not deselect the same chest if clicked multiple times
+        if (selectedChestColor != ChestColors.Blue)
+        {
+            DeselectChest(selectedChestColor);
+            // Check if you can open the chest, or watch the ad
+            blueChest.transform.Find("ChestSelect").GetComponent<TriggerAnimation>().TriggerSpecificAnimation("Select");
+            // If there are no blue chests, make play button as watch ad button
+            selectedChestColor = ChestColors.Blue;
+        }
+        
         ResetAllButtons();
         if (player.blueChestCount > 0)
         {
             openButton.SetActive(true);
-        } else
+        }
+        else
         {
             watchButton.SetActive(true);
         }
@@ -101,9 +112,15 @@ public class ChestsStatus : MonoBehaviour
 
     public void SelectPurpleChest()
     {
-        // Check if you can open the chest, or buy the chest
-        Debug.Log("Opening purple chest");
-        selectedChestColor = ChestColors.Purple;
+        // Do not deselect the same chest if clicked multiple times
+        if (selectedChestColor != ChestColors.Purple)
+        {
+            DeselectChest(selectedChestColor);
+            // Check if you can open the chest, or buy the chest
+            purpleChest.transform.Find("ChestSelect").GetComponent<TriggerAnimation>().TriggerSpecificAnimation("Select");
+            selectedChestColor = ChestColors.Purple;
+        }
+
         ResetAllButtons();
         if (player.purpleChestCount > 0)
         {
@@ -117,9 +134,15 @@ public class ChestsStatus : MonoBehaviour
 
     public void SelectRedChest()
     {
-        // Check if you can open the chest, or buy the chest
-        Debug.Log("Opening red chest");
-        selectedChestColor = ChestColors.Red;
+        // Do not deselect the same chest if clicked multiple times
+        if (selectedChestColor != ChestColors.Red)
+        {
+            DeselectChest(selectedChestColor);
+            // Check if you can open the chest, or buy the chest
+            redChest.transform.Find("ChestSelect").GetComponent<TriggerAnimation>().TriggerSpecificAnimation("Select");
+            selectedChestColor = ChestColors.Red;
+        }
+        
         ResetAllButtons();
         if (player.redChestCount > 0)
         {
@@ -129,6 +152,22 @@ public class ChestsStatus : MonoBehaviour
         {
             buyButton.SetActive(true);
         }
+    }
+
+    private void DeselectChest(ChestColors chestColor)
+    {
+        switch (chestColor)
+        {
+            case ChestColors.Red:
+                redChest.GetComponent<ChestItem>().DeselectChest();
+                break;
+            case ChestColors.Purple:
+                purpleChest.GetComponent<ChestItem>().DeselectChest();
+                break;
+            case ChestColors.Blue:
+                blueChest.GetComponent<ChestItem>().DeselectChest();
+                break;
+        }        
     }
 
     public void ClickWatchButton()

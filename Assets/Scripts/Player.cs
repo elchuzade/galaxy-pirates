@@ -6,8 +6,8 @@ public class Player : MonoBehaviour
     public int coins = 0;
     public int diamonds = 0;
     public int gold = 0;
-    public int silver = 0;
-    public int bronze = 0;
+    public int aluminum = 0;
+    public int copper = 0;
     public int brass = 0;
     public int titanium = 0;
     public int power = 100;
@@ -54,8 +54,8 @@ public class Player : MonoBehaviour
         playerName = "";
         diamonds = 555;
         gold = 9555;
-        silver = 9555;
-        bronze = 9555;
+        aluminum = 9555;
+        copper = 9555;
         brass = 9555;
         titanium = 9555;
         power = 100;
@@ -93,8 +93,8 @@ public class Player : MonoBehaviour
         coins = data.coins;
         diamonds = data.diamonds;
         gold = data.gold;
-        silver = data.silver;
-        bronze = data.bronze;
+        aluminum = data.aluminum;
+        copper = data.copper;
         brass = data.brass;
         titanium = data.titanium;
         power = data.power;

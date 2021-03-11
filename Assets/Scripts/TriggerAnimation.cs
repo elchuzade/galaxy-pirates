@@ -13,4 +13,9 @@ public class TriggerAnimation : MonoBehaviour
     {
         anim.SetTrigger("Start");
     }
+
+    public void TriggerSpecificAnimation(string animationName)
+    {
+        anim.SetTrigger(animationName);
+    }
 }

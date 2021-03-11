@@ -8,8 +8,8 @@ public class PlanetItem : MonoBehaviour
     [SerializeField] int coin;
     [SerializeField] int diamond;
     [SerializeField] int gold;
-    [SerializeField] int silver;
-    [SerializeField] int bronze;
+    [SerializeField] int aluminum;
+    [SerializeField] int copper;
     [SerializeField] int brass;
     [SerializeField] int titanium;
 
@@ -26,6 +26,6 @@ public class PlanetItem : MonoBehaviour
     // @Access from MapsStatus
     public (int, int, int, int, int, int, int) getData()
     {
-        return (coin, diamond, gold, silver, bronze, brass, titanium);
+        return (coin, diamond, gold, aluminum, copper, brass, titanium);
     }
 }

@@ -11,8 +11,8 @@ public class MainStatus : MonoBehaviour
     [SerializeField] Text diamondsText;
     [SerializeField] Text coinsText;
     [SerializeField] Text goldText;
-    [SerializeField] Text silverText;
-    [SerializeField] Text bronzeText;
+    [SerializeField] Text aluminumText;
+    [SerializeField] Text copperText;
     [SerializeField] Text brassText;
     [SerializeField] Text titaniumText;
     [SerializeField] Text powerText;
@@ -72,8 +72,8 @@ public class MainStatus : MonoBehaviour
         diamondsText.text = player.diamonds.ToString();
         coinsText.text = player.coins.ToString();
         goldText.text = player.gold.ToString();
-        silverText.text = player.silver.ToString();
-        bronzeText.text = player.bronze.ToString();
+        aluminumText.text = player.aluminum.ToString();
+        copperText.text = player.copper.ToString();
         brassText.text = player.brass.ToString();
         titaniumText.text = player.titanium.ToString();
         powerText.text = player.power.ToString();

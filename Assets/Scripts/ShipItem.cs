@@ -2,16 +2,17 @@
 
 public class ShipItem : MonoBehaviour
 {
-    [Header("Map Reward")]
+    [Header("Ship Cost")]
     [SerializeField] int gold;
-    [SerializeField] int silver;
-    [SerializeField] int bronze;
+    [SerializeField] int aluminum;
+    [SerializeField] int copper;
     [SerializeField] int brass;
     [SerializeField] int titanium;
+    [SerializeField] int power;
 
-    // @Access from MapsStatus
-    public (int, int, int, int, int) GetData()
+    // @access from ShopStatus
+    public (int, int, int, int, int, int) GetData()
     {
-        return (gold, silver, bronze, brass, titanium);
+        return (gold, aluminum, copper, brass, titanium, power);
     }
 }

@@ -2,7 +2,7 @@
 {
     public enum Currency { Coin, Diamond };
 
-    public enum ScrapMaterialName { Gold, Silver, Bronze, Titanium, Brass };
+    public enum ScrapMaterialName { Gold, Aluminum, Copper, Titanium, Brass };
 
     public enum BreakableObjectName { Moon, Satellite, Meteor, Astronaut, EnemyShip };
 
@@ -14,7 +14,7 @@
 
     public enum PlanetName { Saturn, Earth, Jupiter, Mars, Venus };
 
-    public enum ChestColors { Blue, Purple, Red };
+    public enum ChestColors { Blue, Purple, Red, None };
 
-    public enum Rewards { Diamond, Coin, Gold, Silver, Bronze, Brass, Titanium };
+    public enum Rewards { Diamond, Coin, Gold, Aluminum, Copper, Brass, Titanium };
 }

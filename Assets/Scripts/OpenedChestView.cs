@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using static GlobalVariables;
 
@@ -14,12 +15,15 @@ public class OpenedChestView : MonoBehaviour
     [SerializeField] GameObject diamondReward;
     [SerializeField] GameObject coinReward;
     [SerializeField] GameObject goldReward;
-    [SerializeField] GameObject silverReward;
-    [SerializeField] GameObject bronzeReward;
+    [SerializeField] GameObject aluminumReward;
+    [SerializeField] GameObject copperReward;
     [SerializeField] GameObject brassReward;
     [SerializeField] GameObject titaniumReward;
 
+    [SerializeField] Text rewardCountText;
+
     List<Rewards> allRewards;
+    int rewardCount;
 
     void Start()
     {
@@ -52,7 +56,22 @@ public class OpenedChestView : MonoBehaviour
         int rewardIndex = Random.Range(0, allRewards.Count);
         Rewards reward = allRewards[rewardIndex];
 
+        switch (chestColor)
+        {
+            case ChestColors.Red:
+                rewardCount = redChest.GetComponent<ChestItem>().GetRewardCount(reward);
+                break;
+            case ChestColors.Purple:
+                rewardCount = purpleChest.GetComponent<ChestItem>().GetRewardCount(reward);
+                break;
+            case ChestColors.Blue:
+            default:
+                rewardCount = blueChest.GetComponent<ChestItem>().GetRewardCount(reward);
+                break;
+        }
+
         ShowOpenedReward(reward);
+        rewardCountText.text = "+" + rewardCount.ToString();
     }
 
     private void ShowOpenedReward(Rewards reward)
@@ -69,11 +88,11 @@ public class OpenedChestView : MonoBehaviour
             case Rewards.Gold:
                 goldReward.SetActive(true);
                 break;
-            case Rewards.Silver:
-                silverReward.SetActive(true);
+            case Rewards.Aluminum:
+                aluminumReward.SetActive(true);
                 break;
-            case Rewards.Bronze:
-                bronzeReward.SetActive(true);
+            case Rewards.Copper:
+                copperReward.SetActive(true);
                 break;
             case Rewards.Brass:
                 brassReward.SetActive(true);
@@ -106,8 +125,8 @@ public class OpenedChestView : MonoBehaviour
         diamondReward.SetActive(false);
         coinReward.SetActive(false);
         goldReward.SetActive(false);
-        silverReward.SetActive(false);
-        bronzeReward.SetActive(false);
+        aluminumReward.SetActive(false);
+        copperReward.SetActive(false);
         brassReward.SetActive(false);
         titaniumReward.SetActive(false);
     }

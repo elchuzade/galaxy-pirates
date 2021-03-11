@@ -217,7 +217,7 @@ PrefabInstance:
     - target: {fileID: 5067314596678957623, guid: eb3fc58e3bb8f424fb0cf33b2eb5be71,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5067314596678957623, guid: eb3fc58e3bb8f424fb0cf33b2eb5be71,
         type: 3}
@@ -410,12 +410,12 @@ PrefabInstance:
     - target: {fileID: 1386367260613378557, guid: 4629e6a73f76745a989a658e600c01bb,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 119
+      value: 157
       objectReference: {fileID: 0}
     - target: {fileID: 1386367260613378557, guid: 4629e6a73f76745a989a658e600c01bb,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -139
+      value: -142
       objectReference: {fileID: 0}
     - target: {fileID: 1386367260613378557, guid: 4629e6a73f76745a989a658e600c01bb,
         type: 3}
@@ -437,16 +437,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 5949718839546081052}
-    - target: {fileID: 3061690838326097485, guid: 4629e6a73f76745a989a658e600c01bb,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SelectBlueChest
-      objectReference: {fileID: 0}
-    - target: {fileID: 3061690838326097485, guid: 4629e6a73f76745a989a658e600c01bb,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 7187002023562782224, guid: 4629e6a73f76745a989a658e600c01bb,
         type: 3}
       propertyPath: m_Name
@@ -467,6 +457,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8889032082308448138}
     m_Modifications:
+    - target: {fileID: 148700902922270097, guid: 51038eca1eaeb4b8aa56962879199047,
+        type: 3}
+      propertyPath: m_Name
+      value: AluminumReward
+      objectReference: {fileID: 0}
     - target: {fileID: 498698872593620774, guid: 51038eca1eaeb4b8aa56962879199047,
         type: 3}
       propertyPath: m_Pivot.x
@@ -577,6 +572,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1043889735023950326, guid: 51038eca1eaeb4b8aa56962879199047,
+        type: 3}
+      propertyPath: m_Name
+      value: CopperReward
+      objectReference: {fileID: 0}
     - target: {fileID: 2201249098100011080, guid: 51038eca1eaeb4b8aa56962879199047,
         type: 3}
       propertyPath: m_Name
@@ -602,21 +602,6 @@ PrefabInstance:
       propertyPath: purpleChest
       value: 
       objectReference: {fileID: 233537399069298789}
-    - target: {fileID: 9118839185253875944, guid: 51038eca1eaeb4b8aa56962879199047,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 5949718839546081052}
-    - target: {fileID: 9118839185253875944, guid: 51038eca1eaeb4b8aa56962879199047,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ClickCloseChestOpenedView
-      objectReference: {fileID: 0}
-    - target: {fileID: 9118839185253875944, guid: 51038eca1eaeb4b8aa56962879199047,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 51038eca1eaeb4b8aa56962879199047, type: 3}
 --- !u!1 &1021865896519297954 stripped
@@ -957,16 +942,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 5949718839546081052}
-    - target: {fileID: 769660329880777575, guid: 8561f65d8fa5b482ab1b439c6209c123,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SelectRedChest
-      objectReference: {fileID: 0}
-    - target: {fileID: 769660329880777575, guid: 8561f65d8fa5b482ab1b439c6209c123,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 3742055656898282711, guid: 8561f65d8fa5b482ab1b439c6209c123,
         type: 3}
       propertyPath: m_Pivot.x
@@ -1076,41 +1051,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: RedChest
-      objectReference: {fileID: 0}
-    - target: {fileID: 7015536356933052597, guid: 8561f65d8fa5b482ab1b439c6209c123,
-        type: 3}
-      propertyPath: coinChance
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7015536356933052597, guid: 8561f65d8fa5b482ab1b439c6209c123,
-        type: 3}
-      propertyPath: goldChance
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7015536356933052597, guid: 8561f65d8fa5b482ab1b439c6209c123,
-        type: 3}
-      propertyPath: brassChance
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7015536356933052597, guid: 8561f65d8fa5b482ab1b439c6209c123,
-        type: 3}
-      propertyPath: bronzeChance
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7015536356933052597, guid: 8561f65d8fa5b482ab1b439c6209c123,
-        type: 3}
-      propertyPath: silverChance
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7015536356933052597, guid: 8561f65d8fa5b482ab1b439c6209c123,
-        type: 3}
-      propertyPath: diamondChance
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7015536356933052597, guid: 8561f65d8fa5b482ab1b439c6209c123,
-        type: 3}
-      propertyPath: titaniumChance
-      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8561f65d8fa5b482ab1b439c6209c123, type: 3}
@@ -1266,16 +1206,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 5949718839546081052}
-    - target: {fileID: 1430249661267257472, guid: 1ab3d9006297c4cd3a21cebc1b3aadaf,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SelectPurpleChest
-      objectReference: {fileID: 0}
-    - target: {fileID: 1430249661267257472, guid: 1ab3d9006297c4cd3a21cebc1b3aadaf,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 3069579488680222512, guid: 1ab3d9006297c4cd3a21cebc1b3aadaf,
         type: 3}
       propertyPath: m_Pivot.x

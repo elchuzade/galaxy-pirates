@@ -43,16 +43,17 @@ public class ShopStatus : MonoBehaviour
     [SerializeField] Text coinsText;
 
     int shipGold;
-    int shipSilver;
-    int shipBronze;
+    int shipAluminum;
+    int shipCopper;
     int shipBrass;
     int shipTitanium;
+    int shipBasePower;
 
     // Price of building ship
     [Header("Ship Price")]
     [SerializeField] Text shipGoldText;
-    [SerializeField] Text shipSilverText;
-    [SerializeField] Text shipBronzeText;
+    [SerializeField] Text shipAluminumText;
+    [SerializeField] Text shipCopperText;
     [SerializeField] Text shipBrassText;
     [SerializeField] Text shipTitaniumText;
 
@@ -104,22 +105,23 @@ public class ShopStatus : MonoBehaviour
     {
         ShipItem currentShipItem = ships[shipIndex].GetComponent<ShipItem>();
 
-        (int, int, int, int, int) shipData = currentShipItem.GetData();
+        (int, int, int, int, int, int) shipData = currentShipItem.GetData();
         shipGold = shipData.Item1;
-        shipSilver = shipData.Item2;
-        shipBronze = shipData.Item3;
+        shipAluminum = shipData.Item2;
+        shipCopper = shipData.Item3;
         shipBrass = shipData.Item4;
         shipTitanium = shipData.Item5;
+        shipBasePower = shipData.Item6;
 
         shipGoldText.text = player.gold.ToString() + " / " + shipGold.ToString();
-        shipSilverText.text = player.silver.ToString() + " / " + shipSilver.ToString();
-        shipBronzeText.text = player.bronze.ToString() + " / " + shipBronze.ToString();
+        shipAluminumText.text = player.aluminum.ToString() + " / " + shipAluminum.ToString();
+        shipCopperText.text = player.copper.ToString() + " / " + shipCopper.ToString();
         shipBrassText.text = player.brass.ToString() + " / " + shipBrass.ToString();
         shipTitaniumText.text = player.titanium.ToString() + " / " + shipTitanium.ToString();
 
         shipGoldText.color = new Color32(255, 255, 255, 255);
-        shipSilverText.color = new Color32(255, 255, 255, 255);
-        shipBronzeText.color = new Color32(255, 255, 255, 255);
+        shipAluminumText.color = new Color32(255, 255, 255, 255);
+        shipCopperText.color = new Color32(255, 255, 255, 255);
         shipBrassText.color = new Color32(255, 255, 255, 255);
         shipTitaniumText.color = new Color32(255, 255, 255, 255);
 
@@ -128,13 +130,13 @@ public class ShopStatus : MonoBehaviour
         {
             shipGoldText.color = new Color32(161, 208, 35, 255);
         }
-        if (shipSilver <= player.silver)
+        if (shipAluminum <= player.aluminum)
         {
-            shipSilverText.color = new Color32(161, 208, 35, 255);
+            shipAluminumText.color = new Color32(161, 208, 35, 255);
         }
-        if (shipBronze <= player.bronze)
+        if (shipCopper <= player.copper)
         {
-            shipBronzeText.color = new Color32(161, 208, 35, 255);
+            shipCopperText.color = new Color32(161, 208, 35, 255);
         }
         if (shipBrass <= player.brass)
         {
@@ -338,14 +340,14 @@ public class ShopStatus : MonoBehaviour
     {
         // Try building the ship, if successful, then spend build price and hide symbols
         if (player.gold >= shipGold &&
-            player.silver >= shipSilver &&
-            player.bronze >= shipBronze &&
+            player.aluminum >= shipAluminum &&
+            player.copper >= shipCopper &&
             player.brass >= shipBrass &&
             player.titanium >= shipTitanium)
         {
             player.gold -= shipGold;
-            player.silver -= shipSilver;
-            player.bronze -= shipBronze;
+            player.aluminum -= shipAluminum;
+            player.copper -= shipCopper;
             player.brass -= shipBrass;
             player.titanium -= shipTitanium;
 

@@ -133,6 +133,66 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2326945652351167326, guid: bf6a4ddb991a3497f9bbc9b2a20d1d70,
+        type: 3}
+      propertyPath: diamondMax
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 2326945652351167326, guid: bf6a4ddb991a3497f9bbc9b2a20d1d70,
+        type: 3}
+      propertyPath: diamondMin
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2326945652351167326, guid: bf6a4ddb991a3497f9bbc9b2a20d1d70,
+        type: 3}
+      propertyPath: copperChance
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2326945652351167326, guid: bf6a4ddb991a3497f9bbc9b2a20d1d70,
+        type: 3}
+      propertyPath: diamondChance
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2326945652351167326, guid: bf6a4ddb991a3497f9bbc9b2a20d1d70,
+        type: 3}
+      propertyPath: aluminumChance
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2382388839358995434, guid: bf6a4ddb991a3497f9bbc9b2a20d1d70,
+        type: 3}
+      propertyPath: coinChance
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2382388839358995434, guid: bf6a4ddb991a3497f9bbc9b2a20d1d70,
+        type: 3}
+      propertyPath: goldChance
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2382388839358995434, guid: bf6a4ddb991a3497f9bbc9b2a20d1d70,
+        type: 3}
+      propertyPath: brassChance
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2382388839358995434, guid: bf6a4ddb991a3497f9bbc9b2a20d1d70,
+        type: 3}
+      propertyPath: copperChance
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2382388839358995434, guid: bf6a4ddb991a3497f9bbc9b2a20d1d70,
+        type: 3}
+      propertyPath: diamondChance
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2382388839358995434, guid: bf6a4ddb991a3497f9bbc9b2a20d1d70,
+        type: 3}
+      propertyPath: aluminumChance
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2382388839358995434, guid: bf6a4ddb991a3497f9bbc9b2a20d1d70,
+        type: 3}
+      propertyPath: titaniumChance
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 3460692831061312350, guid: bf6a4ddb991a3497f9bbc9b2a20d1d70,
         type: 3}
       propertyPath: chestColor
@@ -143,10 +203,55 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5126826164809963532, guid: bf6a4ddb991a3497f9bbc9b2a20d1d70,
+        type: 3}
+      propertyPath: coinChance
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5126826164809963532, guid: bf6a4ddb991a3497f9bbc9b2a20d1d70,
+        type: 3}
+      propertyPath: goldChance
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5126826164809963532, guid: bf6a4ddb991a3497f9bbc9b2a20d1d70,
+        type: 3}
+      propertyPath: brassChance
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5126826164809963532, guid: bf6a4ddb991a3497f9bbc9b2a20d1d70,
+        type: 3}
+      propertyPath: copperChance
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5126826164809963532, guid: bf6a4ddb991a3497f9bbc9b2a20d1d70,
+        type: 3}
+      propertyPath: diamondChance
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5126826164809963532, guid: bf6a4ddb991a3497f9bbc9b2a20d1d70,
+        type: 3}
+      propertyPath: aluminumChance
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5126826164809963532, guid: bf6a4ddb991a3497f9bbc9b2a20d1d70,
+        type: 3}
+      propertyPath: titaniumChance
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6760310869671804120, guid: bf6a4ddb991a3497f9bbc9b2a20d1d70,
         type: 3}
       propertyPath: chestColor
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7939443819785771778, guid: bf6a4ddb991a3497f9bbc9b2a20d1d70,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1186625205}
+    - target: {fileID: 7939443819785771778, guid: bf6a4ddb991a3497f9bbc9b2a20d1d70,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CloseRewardView
       objectReference: {fileID: 0}
     - target: {fileID: 8889032082308440182, guid: bf6a4ddb991a3497f9bbc9b2a20d1d70,
         type: 3}
@@ -343,6 +448,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1186625205 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9088220507924701844, guid: bf6a4ddb991a3497f9bbc9b2a20d1d70,
+    type: 3}
+  m_PrefabInstance: {fileID: 312648060}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c0aae576dbc1481caf024699e466e8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1528254890
 GameObject:
   m_ObjectHideFlags: 0

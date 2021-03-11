@@ -12,8 +12,8 @@ public class ChestItem : MonoBehaviour
     // Base is used to multiply the reward by factor that effects the chest price
     [Header("Diamond reward")]
     [SerializeField] int diamondChance;
-    [SerializeField] int diamondMin;
-    [SerializeField] int diamondMax;
+    [SerializeField] int diamondBaseMin;
+    [SerializeField] int diamondBaseMax;
     [Header("Coin reward")]
     [SerializeField] int coinChance;
     [SerializeField] int coinBaseMin;
@@ -22,14 +22,14 @@ public class ChestItem : MonoBehaviour
     [SerializeField] int goldChance;
     [SerializeField] int goldBaseMin;
     [SerializeField] int goldBaseMax;
-    [Header("Silver reward")]
-    [SerializeField] int silverChance;
-    [SerializeField] int silverBaseMin;
-    [SerializeField] int silverBaseMax;
-    [Header("Bronze reward")]
-    [SerializeField] int bronzeChance;
-    [SerializeField] int bronzeBaseMin;
-    [SerializeField] int bronzeBaseMax;
+    [Header("Aluminum reward")]
+    [SerializeField] int aluminumChance;
+    [SerializeField] int aluminumBaseMin;
+    [SerializeField] int aluminumBaseMax;
+    [Header("Copper reward")]
+    [SerializeField] int copperChance;
+    [SerializeField] int copperBaseMin;
+    [SerializeField] int copperBaseMax;
     [Header("Brass reward")]
     [SerializeField] int brassChance;
     [SerializeField] int brassBaseMin;
@@ -61,13 +61,13 @@ public class ChestItem : MonoBehaviour
         {
             allRewards.Add(Rewards.Gold);
         }
-        for (int i = 0; i < silverChance; i++)
+        for (int i = 0; i < aluminumChance; i++)
         {
-            allRewards.Add(Rewards.Silver);
+            allRewards.Add(Rewards.Aluminum);
         }
-        for (int i = 0; i < bronzeChance; i++)
+        for (int i = 0; i < copperChance; i++)
         {
-            allRewards.Add(Rewards.Bronze);
+            allRewards.Add(Rewards.Copper);
         }
         for (int i = 0; i < brassChance; i++)
         {
@@ -79,7 +79,13 @@ public class ChestItem : MonoBehaviour
         }
     }
 
-    // @access frm ChestsStatus
+    // @access from ChestsStatus
+    public void DeselectChest()
+    {
+        transform.Find("ChestSelect").GetComponent<TriggerAnimation>().TriggerSpecificAnimation("Deselect");
+    }
+
+    // @access from ChestsStatus
     public void SetCount(int count)
     {
         chestCount.text = count.ToString();
@@ -93,14 +99,45 @@ public class ChestItem : MonoBehaviour
         }
     }
 
-    // @access frm ChestsStatus
+    // @access from ChestsStatus
     public void SetPrice(int price)
     {
         chestPrice.text = price.ToString();
     }
 
+    // @access from OpenedChestView
     public List<Rewards> GetAllRewards()
     {
         return allRewards;
+    }
+    // @access from OpenedChestView
+    public int GetRewardCount(Rewards reward)
+    {
+        int result = 0;
+        switch (reward)
+        {
+            case Rewards.Diamond:
+                result = Random.Range(diamondBaseMin, diamondBaseMax);
+                break;
+            case Rewards.Coin:
+                result = Random.Range(coinBaseMin, coinBaseMax);
+                break;
+            case Rewards.Gold:
+                result = Random.Range(goldBaseMin, goldBaseMax);
+                break;
+            case Rewards.Aluminum:
+                result = Random.Range(aluminumBaseMin, aluminumBaseMax);
+                break;
+            case Rewards.Copper:
+                result = Random.Range(copperBaseMin, copperBaseMax);
+                break;
+            case Rewards.Brass:
+                result = Random.Range(brassBaseMin, brassBaseMax);
+                break;
+            case Rewards.Titanium:
+                result = Random.Range(titaniumBaseMin, titaniumBaseMax);
+                break;
+        }
+        return result;
     }
 }
