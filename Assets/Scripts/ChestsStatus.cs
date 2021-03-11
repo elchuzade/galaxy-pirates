@@ -95,6 +95,7 @@ public class ChestsStatus : MonoBehaviour
             DeselectChest(selectedChestColor);
             // Check if you can open the chest, or watch the ad
             blueChest.transform.Find("ChestSelect").GetComponent<TriggerAnimation>().TriggerSpecificAnimation("Select");
+            blueChest.GetComponent<TriggerAnimation>().Trigger();
             // If there are no blue chests, make play button as watch ad button
             selectedChestColor = ChestColors.Blue;
         }
@@ -118,6 +119,7 @@ public class ChestsStatus : MonoBehaviour
             DeselectChest(selectedChestColor);
             // Check if you can open the chest, or buy the chest
             purpleChest.transform.Find("ChestSelect").GetComponent<TriggerAnimation>().TriggerSpecificAnimation("Select");
+            purpleChest.GetComponent<TriggerAnimation>().Trigger();
             selectedChestColor = ChestColors.Purple;
         }
 
@@ -140,6 +142,7 @@ public class ChestsStatus : MonoBehaviour
             DeselectChest(selectedChestColor);
             // Check if you can open the chest, or buy the chest
             redChest.transform.Find("ChestSelect").GetComponent<TriggerAnimation>().TriggerSpecificAnimation("Select");
+            redChest.GetComponent<TriggerAnimation>().Trigger();
             selectedChestColor = ChestColors.Red;
         }
         
