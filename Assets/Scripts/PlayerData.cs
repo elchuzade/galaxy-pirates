@@ -16,9 +16,6 @@ public class PlayerData
     public string playerName = "";
     public bool playerCreated = false;
     public bool nameChanged = false;
-    public int upgradeIndex = 0;
-    public List<int> upgradePrice = new List<int>() { 100, 200, 300, 400, 500 };
-    public List<int> upgradePower = new List<int>() { 10, 20, 30, 40, 50 };
     public List<int> allPlanets = new List<int>() { 1, 0, 0, 0, 0 };
     public List<int> allShips = new List<int>() { 1, 0, 0, 0, 0, 0 };
     public List<int> allLasers = new List<int>() { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
@@ -28,6 +25,13 @@ public class PlayerData
     public int redChestCount = 0;
     public int purpleChestCount = 0;
     public int blueChestCount = 0;
+    // Upgrade logic
+    public int nextUpgradePrice = 110; // What you will have next
+    public int nextUpgradePower = 12; // What you will have next
+    public int upgradeStepPriceMin = 10; // How much price will increase at least
+    public int upgradeStepPriceMax = 50; // How much price will increase at most
+    public int upgradeStepPowerMin = 2; // How much power will increase at least
+    public int upgradeStepPowerMax = 5; // How much power will increase at most
 
     public PlayerData (Player player)
     {
@@ -43,9 +47,6 @@ public class PlayerData
         playerName = player.playerName;
         playerCreated = player.playerCreated;
         nameChanged = player.nameChanged;
-        upgradeIndex = player.upgradeIndex;
-        upgradePrice = player.upgradePrice;
-        upgradePower = player.upgradePower;
         allPlanets = player.allPlanets;
         allLasers = player.allLasers;
         allShips = player.allShips;
@@ -55,5 +56,12 @@ public class PlayerData
         redChestCount = player.redChestCount;
         purpleChestCount = player.purpleChestCount;
         blueChestCount = player.blueChestCount;
+        // Upgrade logic
+        nextUpgradePrice = player.nextUpgradePrice;
+        nextUpgradePower = player.nextUpgradePower;
+        upgradeStepPriceMin = player.upgradeStepPriceMin;
+        upgradeStepPriceMax = player.upgradeStepPriceMax;
+        upgradeStepPowerMin = player.upgradeStepPowerMin;
+        upgradeStepPowerMax = player.upgradeStepPowerMax;
     }
 }

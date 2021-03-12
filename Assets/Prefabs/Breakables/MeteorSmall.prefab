@@ -4961,6 +4961,12 @@ MonoBehaviour:
   healthPoints: 1000
   coin: {fileID: 3853550951012848469, guid: 3a672f4a5efed468ab08951520cd771f, type: 3}
   diamond: {fileID: 7051145812190331075, guid: 96443c225dba04bdd99925e475b7f32c, type: 3}
+  diamondChance: 5
+  diamondBaseMin: 5
+  diamondBaseMax: 8
+  coinChance: 5
+  coinBaseMin: 3
+  coinBaseMax: 0
 --- !u!95 &1169164656
 Animator:
   serializedVersion: 3

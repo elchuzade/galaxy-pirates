@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using System.Collections.Generic;
 using static GlobalVariables;
 
 [RequireComponent(typeof(Animator))]
@@ -18,6 +19,16 @@ public class Breakable : MonoBehaviour
     // Drop items to reward player for destroying the breakable object
     [SerializeField] GameObject coin;
     [SerializeField] GameObject diamond;
+
+    // Base is used to multiply the reward by factor that effects the chest price
+    [Header("Diamond reward")]
+    [SerializeField] int diamondChance;
+    [SerializeField] int diamondBaseMin;
+    [SerializeField] int diamondBaseMax;
+    [Header("Coin reward")]
+    [SerializeField] int coinChance;
+    [SerializeField] int coinBaseMin;
+    [SerializeField] int coinBaseMax;
 
     void Awake()
     {
@@ -96,13 +107,75 @@ public class Breakable : MonoBehaviour
 
     private IEnumerator DestroyBreakableObject()
     {
-        // Drop a diamond as a reward for destroying the breakable object
-        GameObject diamondInstance = Instantiate(diamond, transform.position, Quaternion.identity);
-        diamondInstance.GetComponent<Droppable>().InitializeDroppable(
-            new Vector2(transform.position.x, transform.position.y - 1), 2);
+        // Make a logic of chance dropping items
+        List<Rewards> allRewards = new List<Rewards>();
+        // STEP 1: Pick one reward type
+        allRewards = BuildAllRewards(allRewards);
+        int rewardIndex = Random.Range(0, allRewards.Count);
+        Rewards reward = allRewards[rewardIndex];
+        // STEP 2: Pick how much of the reward to give
+        int rewardCount = GetRewardCount(reward);
+        // STEP 3: Instantiate all those rewards and move them to canvas
+        DropAllRewards(reward, rewardCount);
 
         yield return new WaitForSeconds(2f);
 
         Destroy(gameObject);
+    }
+
+    private void DropAllRewards(Rewards reward, int rewardCount)
+    {
+        // Drop rewards in -5 to 5 pixels away from the breakable object
+        switch (reward)
+        {
+            case Rewards.Diamond:
+                for (int i = 0; i < rewardCount; i++)
+                {
+                    // Drop a diamond as a reward for destroying the breakable object
+                    GameObject diamondInstance = Instantiate(diamond, transform.position, Quaternion.identity);
+                    diamondInstance.GetComponent<Droppable>().InitializeDroppable(
+                        new Vector2(transform.position.x + Random.Range(-20, 20), transform.position.y + Random.Range(-20, 20)), 80);
+                }
+                break;
+            case Rewards.Coin:
+            default:
+                for (int i = 0; i < rewardCount; i++)
+                {
+                    // Drop a coin as a reward for destroying the breakable object
+                    GameObject coinInstance = Instantiate(coin, transform.position, Quaternion.identity);
+                    coinInstance.GetComponent<Droppable>().InitializeDroppable(
+                        new Vector2(transform.position.x + Random.Range(-20, 20), transform.position.y + Random.Range(-20, 20)), 80);
+                }
+                break;
+        }
+    }
+
+    private List<Rewards> BuildAllRewards(List<Rewards> allRewards)
+    {
+        // Add all the possible rewards into the basket of all rewards
+        for (int i = 0; i < diamondChance; i++)
+        {
+            allRewards.Add(Rewards.Diamond);
+        }
+        for (int i = 0; i < coinChance; i++)
+        {
+            allRewards.Add(Rewards.Coin);
+        }
+        return allRewards;
+    }
+
+    private int GetRewardCount(Rewards reward)
+    {
+        int result = 0;
+        switch (reward)
+        {
+            case Rewards.Diamond:
+                result = Random.Range(diamondBaseMin, diamondBaseMax);
+                break;
+            case Rewards.Coin:
+                result = Random.Range(coinBaseMin, coinBaseMax);
+                break;
+        }
+        return result;
     }
 }

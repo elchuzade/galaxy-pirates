@@ -15,9 +15,6 @@ public class Player : MonoBehaviour
     public string playerName = "";
     public bool nameChanged = false;
     public bool playerCreated = false;
-    public int upgradeIndex = 0;
-    public List<int> upgradePrice = new List<int>() { 100, 200, 300, 400, 500 };
-    public List<int> upgradePower = new List<int>() { 10, 20, 30, 40, 50 };
     public List<int> allPlanets = new List<int>() { 1, 0, 0, 0, 0 };
     public List<int> allShips = new List<int>() { 1, 0, 0, 0, 0, 0 };
     public List<int> allLasers = new List<int>() { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
@@ -27,6 +24,13 @@ public class Player : MonoBehaviour
     public int redChestCount = 0;
     public int purpleChestCount = 0;
     public int blueChestCount = 0;
+    // Upgrade logic
+    public int nextUpgradePrice = 100; // What you will have next
+    public int nextUpgradePower = 10; // What you will have next
+    public int upgradeStepPriceMin = 10; // How much price will increase at least
+    public int upgradeStepPriceMax = 50; // How much price will increase at most
+    public int upgradeStepPowerMin = 2; // How much power will increase at least
+    public int upgradeStepPowerMax = 5; // How much power will increase at most
 
     void Awake()
     {
@@ -63,9 +67,6 @@ public class Player : MonoBehaviour
         playerName = "";
         playerCreated = false;
         nameChanged = false;
-        upgradeIndex = 0;
-        upgradePrice = new List<int>() { 100, 200, 300, 400, 500 };
-        upgradePower = new List<int>() { 10, 20, 30, 40, 50 };
         allPlanets = new List<int>() { 1, 1, 1, 0, 0 };
         allShips = new List<int>() { 1, 1, 0, 1, 0, 0 };
         allLasers = new List<int>() { 1, 0, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0 };
@@ -75,8 +76,15 @@ public class Player : MonoBehaviour
         redChestCount = 0;
         purpleChestCount = 0;
         blueChestCount = 0;
+        // Upgrade logic
+        nextUpgradePrice = 100;
+        nextUpgradePower = 10;
+        upgradeStepPriceMin = 10;
+        upgradeStepPriceMax = 50;
+        upgradeStepPowerMin = 2;
+        upgradeStepPowerMax = 5;
 
-    SaveSystem.SavePlayer(this);
+        SaveSystem.SavePlayer(this);
     }
 
     public void LoadPlayer()
@@ -100,9 +108,6 @@ public class Player : MonoBehaviour
         power = data.power;
         nameChanged = data.nameChanged;
         nextLevelIndex = data.nextLevelIndex;
-        upgradeIndex = data.upgradeIndex;
-        upgradePrice = data.upgradePrice;
-        upgradePower = data.upgradePower;
         allPlanets = data.allPlanets;
         allLasers = data.allLasers;
         allShips = data.allShips;
@@ -112,5 +117,12 @@ public class Player : MonoBehaviour
         redChestCount = data.redChestCount;
         purpleChestCount = data.purpleChestCount;
         blueChestCount = data.blueChestCount;
+        // Upgrade logic
+        nextUpgradePrice = data.nextUpgradePrice;
+        nextUpgradePower = data.nextUpgradePower;
+        upgradeStepPriceMin = data.upgradeStepPriceMin;
+        upgradeStepPriceMax = data.upgradeStepPriceMax;
+        upgradeStepPowerMin = data.upgradeStepPowerMin;
+        upgradeStepPowerMax = data.upgradeStepPowerMax;
     }
 }

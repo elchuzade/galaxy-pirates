@@ -22,8 +22,6 @@ public class MainStatus : MonoBehaviour
     // To run animation and to show notification sign
     [SerializeField] GameObject chestButton;
 
-    int upgradeIndex;
-
     void Awake()
     {
         navigator = FindObjectOfType<Navigator>();
@@ -34,7 +32,7 @@ public class MainStatus : MonoBehaviour
     void Start()
     {
         player = FindObjectOfType<Player>();
-        //player.ResetPlayer();
+        player.ResetPlayer();
         player.LoadPlayer();
 
         SetScoreboardValues();
@@ -59,12 +57,8 @@ public class MainStatus : MonoBehaviour
 
     private void SetUpgradeButton()
     {
-        upgradeIndex = player.upgradeIndex;
-        if (upgradeIndex < player.upgradePower.Count)
-        {
-            upgradePower.text = "+" + player.upgradePower[upgradeIndex].ToString();
-            upgradePrice.text = "-" + player.upgradePrice[upgradeIndex].ToString();
-        }
+        upgradePower.text = "+" + player.nextUpgradePower.ToString();
+        upgradePrice.text = "-" + player.nextUpgradePrice.ToString();
     }
 
     private void SetScoreboardValues()
@@ -81,13 +75,27 @@ public class MainStatus : MonoBehaviour
 
     public void ClickUpgradeButton()
     {
-        Debug.Log("Upgrading");
+        if (player.coins >= player.nextUpgradePrice)
+        {
+            int upgradeStepPrice = Random.Range(player.upgradeStepPriceMin, player.upgradeStepPriceMax);
+            int upgradeStepPower = Random.Range(player.upgradeStepPowerMin, player.upgradeStepPowerMax);
+
+            player.coins -= player.nextUpgradePrice;
+            player.power += player.nextUpgradePower;
+
+
+
+            player.nextUpgradePrice += upgradeStepPrice;
+            player.nextUpgradePower += upgradeStepPower;
+
+            player.SavePlayer();
+            SetScoreboardValues();
+            SetUpgradeButton();
+        }
     }
 
     public void ClickPlayButton()
     {
-        Debug.Log("player.nextLevelIndex");
-        Debug.Log(player.nextLevelIndex);
         navigator.LoadNextLevel(player.nextLevelIndex);
     }
 

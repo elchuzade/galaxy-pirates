@@ -4,16 +4,18 @@ using static GlobalVariables;
 
 public class LevelStatus : MonoBehaviour
 {
+    Player player;
+    Navigator navigator;
     // Scoreboard gold scrap material icon
-    GameObject goldIcon;
-    GameObject aluminumIcon;
-    GameObject copperIcon;
-    GameObject brassIcon;
-    GameObject titaniumIcon;
-    GameObject diamondsIcon;
-    GameObject coinsIcon;
-    Text diamondsText;
-    Text coinsText;
+    [SerializeField] GameObject goldIcon;
+    [SerializeField] GameObject aluminumIcon;
+    [SerializeField] GameObject copperIcon;
+    [SerializeField] GameObject brassIcon;
+    [SerializeField] GameObject titaniumIcon;
+    [SerializeField] GameObject diamondsIcon;
+    [SerializeField] GameObject coinsIcon;
+    [SerializeField] Text diamondsText;
+    [SerializeField] Text coinsText;
 
     int gold;
     int aluminum;
@@ -25,25 +27,15 @@ public class LevelStatus : MonoBehaviour
 
     void Awake()
     {
-        // materials inside scoreboard inside canvas
-        Transform materials = GameObject.Find("Canvas").transform.Find("Scoreboard").Find("Materials");
-        goldIcon = materials.Find("Gold").gameObject;
-        aluminumIcon = materials.Find("Aluminum").gameObject;
-        copperIcon = materials.Find("Copper").gameObject;
-        brassIcon = materials.Find("Brass").gameObject;
-        titaniumIcon = materials.Find("Titanium").gameObject;
-
-        Transform diamondsParent = GameObject.Find("Canvas").transform.Find("Scoreboard").Find("Diamonds");
-        Transform coinsParent = GameObject.Find("Canvas").transform.Find("Scoreboard").Find("Coins");
-
-        diamondsIcon = diamondsParent.Find("Diamond").gameObject;
-        coinsIcon = coinsParent.Find("Coin").gameObject;
-        diamondsText = diamondsParent.Find("DiamondCount").GetComponent<Text>();
-        coinsText = coinsParent.Find("CoinCount").GetComponent<Text>();
+        navigator = FindObjectOfType<Navigator>();
     }
 
     void Start()
     {
+        player = FindObjectOfType<Player>();
+
+        player.LoadPlayer();
+        SetPlayerValues();
         SetScoreboardValues();
     }
 
@@ -63,6 +55,17 @@ public class LevelStatus : MonoBehaviour
         coins += count;
         coinsIcon.GetComponent<TriggerAnimation>().Trigger();
         SetScoreboardValues();
+    }
+
+    private void SetPlayerValues()
+    {
+        coins = player.coins;
+        diamonds = player.diamonds;
+        gold = player.gold;
+        aluminum = player.aluminum;
+        copper = player.copper;
+        brass = player.brass;
+        titanium = player.titanium;
     }
 
     private void SetScoreboardValues()
@@ -102,5 +105,10 @@ public class LevelStatus : MonoBehaviour
             default:
                 break;
         }
+    }
+
+    public void ClickHomeButton()
+    {
+        navigator.LoadMainScene();
     }
 }

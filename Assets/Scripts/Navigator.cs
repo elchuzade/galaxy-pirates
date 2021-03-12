@@ -36,8 +36,7 @@ public class Navigator : MonoBehaviour
 
     public void LoadNextLevel(int nextLevelIndex)
     {
-        Debug.Log("Loading Level Scene");
-        //SceneManager.LoadScene("Level-" + nextLevelIndex);
+        SceneManager.LoadScene("Level-" + nextLevelIndex);
     }
 
     public void LoadLeaderboardScene()
