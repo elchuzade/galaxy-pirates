@@ -8,6 +8,8 @@ public class PlanetsStatus : MonoBehaviour
 
     // Conquered is the status of previous planets
     [SerializeField] GameObject conqueredButton;
+    // Collect is the button to show if you passed the 25th levels and haven't collected reward yet
+    [SerializeField] GameObject collectButton;
     // Scrollbar handle to control its value
     [SerializeField] GameObject planetScrollbar;
     // All planets from scroll content
@@ -33,11 +35,8 @@ public class PlanetsStatus : MonoBehaviour
     void Start()
     {
         player = FindObjectOfType<Player>();
-        //player.ResetPlayer();
+        player.ResetPlayer();
         player.LoadPlayer();
-
-        player.nextLevelIndex = 76;
-        player.SavePlayer();
 
         // Autoscroll to current planet
         planetScrollbar.GetComponent<Scrollbar>().value = (float)player.currentPlanetIndex / 4;
@@ -64,8 +63,11 @@ public class PlanetsStatus : MonoBehaviour
 
     private void SetPlanetValues()
     {
-        PlanetItem currentPlanet = planets[planetIndex].GetComponent<PlanetItem>();
+        conqueredButton.SetActive(false);
+        collectButton.SetActive(false);
 
+        // To decide what to drop as a reward if it has not been collected yet
+        PlanetItem currentPlanet = planets[planetIndex].GetComponent<PlanetItem>();
         (int, int, int, int, int, int, int) planetData = currentPlanet.getData();
 
         // Set arrows
@@ -86,23 +88,22 @@ public class PlanetsStatus : MonoBehaviour
             leftArrow.GetComponent<Image>().color = new Color32(161, 208, 35, 255);
             rightArrow.GetComponent<Image>().color = new Color32(161, 208, 35, 255);
         }
-        // Set conquered buttons on some planets
-        if (player.currentPlanetIndex == planetIndex)
+
+        if (player.allPlanets[planetIndex] == 0)
         {
-            // Current map must be little different
-            conqueredButton.SetActive(false);
-        } else
+            planets[planetIndex].transform.Find("PlanetIcon").GetComponent<Image>().color = new Color32(100, 100, 100, 255);
+        }
+        else if (player.allPlanets[planetIndex] == -1)
         {
-            // Map is either conquered or not
-            if (player.allPlanets[planetIndex] == 0)
-            {
-                // Planet is not conquered
-                conqueredButton.SetActive(false);
-            } else
-            {
-                // Planet is conquered
-                conqueredButton.SetActive(true);
-            }
+            planets[planetIndex].transform.Find("PlanetIcon").GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+            // Planet is not collected but passed 
+            collectButton.SetActive(true);
+        }
+        else if (player.allPlanets[planetIndex] == 1)
+        {
+            planets[planetIndex].transform.Find("PlanetIcon").GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+            // Planet is conquered and collected
+            conqueredButton.SetActive(true);
         }
     }
 
@@ -124,6 +125,13 @@ public class PlanetsStatus : MonoBehaviour
             planetScrollbar.GetComponent<Scrollbar>().value = (float)planetIndex / 4;
             SetPlanetValues();
         }
+    }
+
+    public void ClickCollectPlanetReward()
+    {
+        Debug.Log("collecting");
+        // Open the reward view that will show number and icon of reward
+        // Make it move to the grid of numbers and collected rewards scrollview
     }
 
     public void ClickBackButton()

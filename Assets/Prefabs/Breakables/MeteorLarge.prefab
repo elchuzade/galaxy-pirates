@@ -124,7 +124,7 @@ MonoBehaviour:
   diamondBaseMax: 8
   coinChance: 5
   coinBaseMin: 3
-  coinBaseMax: 0
+  coinBaseMax: 6
 --- !u!95 &388639067
 Animator:
   serializedVersion: 3

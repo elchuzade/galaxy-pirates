@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
     public string playerName = "";
     public bool nameChanged = false;
     public bool playerCreated = false;
-    public List<int> allPlanets = new List<int>() { 1, 0, 0, 0, 0 };
+    public List<int> allPlanets = new List<int>() { 1, 0, 0, 0, 0 }; // 1 conquered and collected, -1 passed not collected, 0 locked
     public List<int> allShips = new List<int>() { 1, 0, 0, 0, 0, 0 };
     public List<int> allLasers = new List<int>() { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
     public int currentLaserIndex = 0;
@@ -67,12 +67,12 @@ public class Player : MonoBehaviour
         playerName = "";
         playerCreated = false;
         nameChanged = false;
-        allPlanets = new List<int>() { 1, 1, 1, 0, 0 };
+        allPlanets = new List<int>() { 1, 0, 0, 0, 0 };
         allShips = new List<int>() { 1, 1, 0, 1, 0, 0 };
         allLasers = new List<int>() { 1, 0, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0 };
         currentLaserIndex = 13;
         currentShipIndex = 3;
-        currentPlanetIndex = 2;
+        currentPlanetIndex = 0;
         redChestCount = 0;
         purpleChestCount = 0;
         blueChestCount = 0;
