@@ -6,6 +6,7 @@ public class PlanetsStatus : MonoBehaviour
     Navigator navigator;
     Player player;
 
+    [SerializeField] PlanetRewardsView planetRewardView;
     // Conquered is the status of previous planets
     [SerializeField] GameObject conqueredButton;
     // Collect is the button to show if you passed the 25th levels and haven't collected reward yet
@@ -68,7 +69,7 @@ public class PlanetsStatus : MonoBehaviour
 
         // To decide what to drop as a reward if it has not been collected yet
         PlanetItem currentPlanet = planets[planetIndex].GetComponent<PlanetItem>();
-        (int, int, int, int, int, int, int) planetData = currentPlanet.getData();
+        (int, int, int, int, int, int, int) planetData = currentPlanet.GetData();
 
         // Set arrows
         if (planetIndex == 0)
@@ -129,9 +130,8 @@ public class PlanetsStatus : MonoBehaviour
 
     public void ClickCollectPlanetReward()
     {
-        Debug.Log("collecting");
-        // Open the reward view that will show number and icon of reward
-        // Make it move to the grid of numbers and collected rewards scrollview
+        // Open the reward view and pass planet data to it show one by one
+        planetRewardView.SetPlanetData(planets[planetIndex].GetComponent<PlanetItem>().GetData());
     }
 
     public void ClickBackButton()
