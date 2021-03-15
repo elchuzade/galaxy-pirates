@@ -110,6 +110,7 @@ public class PlanetsStatus : MonoBehaviour
 
     public void ClickLeftArrow()
     {
+        leftArrow.GetComponent<TriggerAnimation>().Trigger();
         if(planetIndex > 0)
         {
             planetIndex--;
@@ -120,6 +121,7 @@ public class PlanetsStatus : MonoBehaviour
 
     public void ClickRightArrow()
     {
+        rightArrow.GetComponent<TriggerAnimation>().Trigger();
         if (planetIndex < planets.Length - 1)
         {
             planetIndex++;

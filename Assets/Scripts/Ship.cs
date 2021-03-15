@@ -1,26 +1,16 @@
 ﻿using UnityEngine;
-using static GlobalVariables;
 
 public class Ship : MonoBehaviour
 {
-    [SerializeField] ShipName shipName;
+    Player player;
+
     [SerializeField] float damage;
-
-    Weapon weapon;
-
-    void Awake()
-    {
-        
-    }
 
     void Start()
     {
-        
-    }
-
-    void Update()
-    {
-        
+        player = FindObjectOfType<Player>();
+        //player.ResetPlayer();
+        player.LoadPlayer();
     }
 
     public float GetWidthFromDamage()

@@ -230,6 +230,7 @@ public class ShopStatus : MonoBehaviour
 
     public void ClickShipLeftArrow()
     {
+        shipLeftArrow.GetComponent<TriggerAnimation>().Trigger();
         if (shipIndex > 0)
         {
             shipIndex--;
@@ -240,6 +241,7 @@ public class ShopStatus : MonoBehaviour
 
     public void ClickShipRightArrow()
     {
+        shipRightArrow.GetComponent<TriggerAnimation>().Trigger();
         if (shipIndex < ships.Length - 1)
         {
             shipIndex++;
@@ -250,6 +252,7 @@ public class ShopStatus : MonoBehaviour
 
     public void ClickLaserLeftArrow()
     {
+        laserLeftArrow.GetComponent<TriggerAnimation>().Trigger();
         if (laserIndex > 0)
         {
             laserIndex--;
@@ -260,6 +263,7 @@ public class ShopStatus : MonoBehaviour
 
     public void ClickLaserRightArrow()
     {
+        laserRightArrow.GetComponent<TriggerAnimation>().Trigger();
         if (laserIndex < lasers.Length / 4 - 1)
         {
             laserIndex++;

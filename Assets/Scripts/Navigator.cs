@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-
 public class Navigator : MonoBehaviour
 {
     void Awake()
@@ -22,6 +21,11 @@ public class Navigator : MonoBehaviour
     public void LoadShop()
     {
         SceneManager.LoadScene("ShopScene");
+    }
+
+    public void LoadLeaderboard()
+    {
+        SceneManager.LoadScene("LeaderboardScene");
     }
 
     public void LoadPlanets()

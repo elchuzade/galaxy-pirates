@@ -1,10 +1,13 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using static Server;
 
 public class MainStatus : MonoBehaviour
 {
     Navigator navigator;
     Player player;
+    Server server;
+    TV tv;
 
     GameObject hapticsButton;
 
@@ -22,24 +25,66 @@ public class MainStatus : MonoBehaviour
     // To run animation and to show notification sign
     [SerializeField] GameObject chestButton;
 
+    [SerializeField] GameObject privacyWindow;
+
     void Awake()
     {
         navigator = FindObjectOfType<Navigator>();
+        server = FindObjectOfType<Server>();
+        tv = FindObjectOfType<TV>();
 
         hapticsButton = GameObject.Find("HapticsButton");
+
+        privacyWindow.transform.localScale = new Vector3(1, 1, 1);
     }
 
     void Start()
     {
         player = FindObjectOfType<Player>();
-        player.ResetPlayer();
+        //player.ResetPlayer();
         player.LoadPlayer();
+
+        server.GetVideoLink();
+
+        if (player.privacyPolicy)
+        {
+            privacyWindow.SetActive(false);
+            //leaderboardButton.GetComponent<Button>().onClick.AddListener(() => ClickLeaderboardButton());
+
+            if (!player.playerCreated)
+            {
+                //server.CreatePlayer();
+            }
+            else
+            {
+                //server.SavePlayerData(player);
+            }
+        }
+        else
+        {
+            //leaderboardButton.GetComponent<Button>().onClick.AddListener(() => ShowPrivacyPolicy());
+            //leaderboardButton.transform.Find("Components").Find("Frame").GetComponent<Image>().color = new Color32(255, 197, 158, 100);
+            //leaderboardButton.transform.Find("Components").Find("Icon").GetComponent<Image>().color = new Color32(255, 255, 255, 100);
+        }
 
         SetScoreboardValues();
         SetButtonInitialState();
         SetUpgradeButton();
 
         SetChestButton();
+    }
+
+    // Set video link from server file
+    public void SetVideoLinkSuccess(VideoJson response)
+    {
+        tv.SetAdLink(response.video);
+        tv.SetAdButton(response.website);
+    }
+
+    // Set error actions of video link from server file
+    public void SetVideoLinkError(string response)
+    {
+        tv.SetLightsRed();
     }
 
     private void SetChestButton()
@@ -114,6 +159,11 @@ public class MainStatus : MonoBehaviour
         navigator.LoadPlanets();
     }
 
+    public void ClickLeaderboardButton()
+    {
+        navigator.LoadLeaderboard();
+    }
+
     public void ClickHapticsButton()
     {
         if (PlayerPrefs.GetInt("Haptics") == 1)
@@ -143,5 +193,40 @@ public class MainStatus : MonoBehaviour
         {
             hapticsButton.transform.Find("Disabled").gameObject.SetActive(true);
         }
+    }
+
+    public void ShowPrivacyPolicy()
+    {
+        privacyWindow.SetActive(true);
+    }
+
+    public void ClickDeclinePrivacyPolicy()
+    {
+        //leaderboardButton.GetComponent<Button>().onClick.AddListener(() => privacyWindow.SetActive(true));
+        privacyWindow.SetActive(false);
+    }
+
+    public void ClickAcceptPrivacyPolicy()
+    {
+        //leaderboardButton.transform.Find("Components").Find("Frame").GetComponent<Image>().color = new Color32(255, 197, 158, 255);
+        //leaderboardButton.transform.Find("Components").Find("Icon").GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+        //leaderboardButton.GetComponent<Button>().onClick.AddListener(() => ClickLeaderboardButton());
+
+        privacyWindow.transform.localScale = new Vector3(0, 1, 1);
+        privacyWindow.SetActive(false);
+        player.privacyPolicy = true;
+        player.SavePlayer();
+
+        //server.CreatePlayer();
+    }
+
+    public void ClickTermsOfUse()
+    {
+        Application.OpenURL("https://abboxgames.com/terms-of-use");
+    }
+
+    public void ClickPrivacyPolicy()
+    {
+        Application.OpenURL("https://abboxgames.com/privacy-policy");
     }
 }

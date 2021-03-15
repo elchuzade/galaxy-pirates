@@ -4,7 +4,11 @@ using UnityEngine;
 [RequireComponent(typeof(LineRenderer))]
 public class LaserShoot : MonoBehaviour
 {
-    [SerializeField] Material laserRed;
+    Player player;
+
+    // CyanLaser, OrangeLaser, PurpleLaser, RedLaser
+    [SerializeField] Material[] laserMaterials;
+
     GameObject shootTip;
 
     Vector2 startPoint;
@@ -37,6 +41,10 @@ public class LaserShoot : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        player = FindObjectOfType<Player>();
+        //player.ResetPlayer();
+        player.LoadPlayer();
+
         damage = ship.GetDamage();
         startPoint = new Vector2(shootTip.transform.position.x, shootTip.transform.position.y);
 
@@ -44,7 +52,9 @@ public class LaserShoot : MonoBehaviour
 
         Points = new List<Vector3>();
         lr = transform.GetComponent<LineRenderer>();
-
+        // Set laser of the ship based on player current laser index.
+        // Order in the shop and this script's materials array must match
+        lr.material = laserMaterials[player.currentLaserIndex];
         laserWidth = ship.GetWidthFromDamage();
     }
 

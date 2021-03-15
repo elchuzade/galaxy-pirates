@@ -121,31 +121,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &43886061 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2356699151247241892, guid: f29d2f307c5804b7eb88e17b34a5de67,
-    type: 3}
-  m_PrefabInstance: {fileID: 107416818}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &43886063
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 43886061}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: be5a7c7abf9b4487598a851eb47d4fb0, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &107416818
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -263,31 +238,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MainCanvas
       objectReference: {fileID: 0}
-    - target: {fileID: 1906162616799063691, guid: f29d2f307c5804b7eb88e17b34a5de67,
-        type: 3}
-      propertyPath: m_Name
-      value: TextButton
-      objectReference: {fileID: 0}
-    - target: {fileID: 4124504674946192242, guid: f29d2f307c5804b7eb88e17b34a5de67,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: -8835930762773195677, guid: a7ff38a400b0443bdbe826d34f4e4b68,
-        type: 2}
-    - target: {fileID: 5407406326179550061, guid: f29d2f307c5804b7eb88e17b34a5de67,
-        type: 3}
-      propertyPath: m_renderer
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7936837521782512291, guid: f29d2f307c5804b7eb88e17b34a5de67,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7936837521782512291, guid: f29d2f307c5804b7eb88e17b34a5de67,
+    - target: {fileID: 2755830067823064006, guid: f29d2f307c5804b7eb88e17b34a5de67,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ClickUpgradeButton
+      value: ClickLeaderboardButton
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f29d2f307c5804b7eb88e17b34a5de67, type: 3}

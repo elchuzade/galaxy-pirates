@@ -15,6 +15,7 @@ public class PlayerData
     public int nextLevelIndex = 1;
     public string playerName = "";
     public bool playerCreated = false;
+    public bool privacyPolicy = false;
     public bool nameChanged = false;
     public List<int> allPlanets = new List<int>() { 1, 0, 0, 0, 0 };
     public List<int> allShips = new List<int>() { 1, 0, 0, 0, 0, 0 };
@@ -46,6 +47,7 @@ public class PlayerData
         nextLevelIndex = player.nextLevelIndex;
         playerName = player.playerName;
         playerCreated = player.playerCreated;
+        privacyPolicy = player.privacyPolicy;
         nameChanged = player.nameChanged;
         allPlanets = player.allPlanets;
         allLasers = player.allLasers;

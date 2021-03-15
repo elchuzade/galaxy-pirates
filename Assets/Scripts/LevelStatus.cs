@@ -6,6 +6,11 @@ public class LevelStatus : MonoBehaviour
 {
     Player player;
     Navigator navigator;
+
+    // Coordiantes where to place a player ship
+    [SerializeField] GameObject playerShipPosition;
+    [SerializeField] GameObject[] playerShips;
+
     // Scoreboard gold scrap material icon
     [SerializeField] GameObject goldIcon;
     [SerializeField] GameObject aluminumIcon;
@@ -33,10 +38,19 @@ public class LevelStatus : MonoBehaviour
     void Start()
     {
         player = FindObjectOfType<Player>();
-
+        // player.ResetPlayer()
         player.LoadPlayer();
+
+        SetPlayerShip();
         SetPlayerValues();
         SetScoreboardValues();
+    }
+
+    private void SetPlayerShip()
+    {
+        // Instantiate i'th ship from playerShips that corresponds to the current player ship. Order matters
+        GameObject playerShip = Instantiate(playerShips[player.currentShipIndex], playerShipPosition.transform.position, Quaternion.identity);
+        playerShip.transform.SetParent(playerShipPosition.transform);
     }
 
     // @Access from droppable diamonds
