@@ -22,7 +22,8 @@ public class Server : MonoBehaviour
     {
         public string playerName;
         public int rank;
-        public string currentBall;
+        public int currentLaserIndex;
+        public int currentShipIndex;
     }
 
     // Video Link
@@ -45,15 +46,15 @@ public class Server : MonoBehaviour
 
     // LOCAL TESTING
     //string abboxAdsApi = "http://localhost:5002";
-    //string ballAndWallsApi = "http://localhost:5001/ballAndWalls";
+    string ballAndWallsApi = "http://localhost:5001/galaxyPirates";
 
     // STAGING
     //string abboxAdsApi = "https://staging.ads.abbox.com";
-    //string ballAndWallsApi = "https://staging.api.abboxgames.com/ballAndWalls";
+    //string ballAndWallsApi = "https://staging.api.abboxgames.com/galaxyPirates";
 
     // PRODUCTION
     string abboxAdsApi = "https://ads.abbox.com";
-    string ballAndWallsApi = "https://api.abboxgames.com/ballAndWalls";
+    //string ballAndWallsApi = "https://api.abboxgames.com/galaxyPirates";
 
     List<LeaderboardItem> top = new List<LeaderboardItem>();
     List<LeaderboardItem> before = new List<LeaderboardItem>();
@@ -63,7 +64,7 @@ public class Server : MonoBehaviour
     // To send response to corresponding files
     [SerializeField] MainStatus mainStatus;
     // This is to call the functions in leaderboard scene
-    //[SerializeField] LeaderboardStatus leaderboardStatus;
+    [SerializeField] LeaderboardStatus leaderboardStatus;
 
     Header header = new Header();
 
@@ -285,51 +286,51 @@ public class Server : MonoBehaviour
 
     private void PopulateLeaderboardData(string jsonData)
     {
-        //// Clear the lists incase they already had data in them
-        //top.Clear();
-        //before.Clear();
-        //after.Clear();
-        //// Extract string arrays of top, before, after and stirng of you data
-        //string[] topData = JsonHelper.GetJsonObjectArray(jsonData, "top");
-        //string[] beforeData = JsonHelper.GetJsonObjectArray(jsonData, "before");
-        //string youData = JsonHelper.GetJsonObject(jsonData, "you");
-        //string[] afterData = JsonHelper.GetJsonObjectArray(jsonData, "after");
+        // Clear the lists incase they already had data in them
+        top.Clear();
+        before.Clear();
+        after.Clear();
+        // Extract string arrays of top, before, after and stirng of you data
+        string[] topData = JsonHelper.GetJsonObjectArray(jsonData, "top");
+        string[] beforeData = JsonHelper.GetJsonObjectArray(jsonData, "before");
+        string youData = JsonHelper.GetJsonObject(jsonData, "you");
+        string[] afterData = JsonHelper.GetJsonObjectArray(jsonData, "after");
 
-        //if (topData != null)
-        //{
-        //    // Parse top data to leaderboard item to populate the list
-        //    for (int i = 0; i < topData.Length; i++)
-        //    {
-        //        LeaderboardItem item = JsonUtility.FromJson<LeaderboardItem>(topData[i]);
-        //        top.Add(item);
-        //    }
-        //}
+        if (topData != null)
+        {
+            // Parse top data to leaderboard item to populate the list
+            for (int i = 0; i < topData.Length; i++)
+            {
+                LeaderboardItem item = JsonUtility.FromJson<LeaderboardItem>(topData[i]);
+                top.Add(item);
+            }
+        }
 
-        //if (beforeData != null)
-        //{
-        //    // Parse before data
-        //    for (int i = 0; i < beforeData.Length; i++)
-        //    {
-        //        LeaderboardItem item = JsonUtility.FromJson<LeaderboardItem>(beforeData[i]);
-        //        before.Add(item);
-        //    }
-        //}
+        if (beforeData != null)
+        {
+            // Parse before data
+            for (int i = 0; i < beforeData.Length; i++)
+            {
+                LeaderboardItem item = JsonUtility.FromJson<LeaderboardItem>(beforeData[i]);
+                before.Add(item);
+            }
+        }
 
-        //// Parse you data
-        //you = JsonUtility.FromJson<LeaderboardItem>(youData);
+        // Parse you data
+        you = JsonUtility.FromJson<LeaderboardItem>(youData);
 
-        //if (afterData != null)
-        //{
-        //    // Parse after data
-        //    for (int i = 0; i < afterData.Length; i++)
-        //    {
-        //        LeaderboardItem item = JsonUtility.FromJson<LeaderboardItem>(afterData[i]);
-        //        after.Add(item);
-        //    }
-        //}
+        if (afterData != null)
+        {
+            // Parse after data
+            for (int i = 0; i < afterData.Length; i++)
+            {
+                LeaderboardItem item = JsonUtility.FromJson<LeaderboardItem>(afterData[i]);
+                after.Add(item);
+            }
+        }
 
-        //// Send leaderboard data to leaderboard scene
-        //leaderboardStatus.SetLeaderboardData(top, before, you, after);
+        // Send leaderboard data to leaderboard scene
+        leaderboardStatus.SetLeaderboardData(top, before, you, after);
     }
 }
 
