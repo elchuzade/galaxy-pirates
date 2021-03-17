@@ -19,6 +19,7 @@ public class MainStatus : MonoBehaviour
     [SerializeField] Text brassText;
     [SerializeField] Text titaniumText;
     [SerializeField] Text powerText;
+    [SerializeField] GameObject powerIcon;
     [SerializeField] Text upgradePrice;
     [SerializeField] Text upgradePower;
 
@@ -122,6 +123,7 @@ public class MainStatus : MonoBehaviour
     {
         if (player.coins >= player.nextUpgradePrice)
         {
+            powerIcon.GetComponent<TriggerAnimation>().Trigger();
             int upgradeStepPrice = Random.Range(player.upgradeStepPriceMin, player.upgradeStepPriceMax);
             int upgradeStepPower = Random.Range(player.upgradeStepPowerMin, player.upgradeStepPowerMax);
 

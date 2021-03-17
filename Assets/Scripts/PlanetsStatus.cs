@@ -68,8 +68,8 @@ public class PlanetsStatus : MonoBehaviour
         collectButton.SetActive(false);
 
         // To decide what to drop as a reward if it has not been collected yet
-        PlanetItem currentPlanet = planets[planetIndex].GetComponent<PlanetItem>();
-        (int, int, int, int, int, int, int) planetData = currentPlanet.GetData();
+        //PlanetItem currentPlanet = planets[planetIndex].GetComponent<PlanetItem>();
+        //(int, int, int, int, int, int, int) planetData = currentPlanet.GetData();
 
         // Set arrows
         if (planetIndex == 0)

@@ -26,10 +26,6 @@ public class LeaderboardStatus : MonoBehaviour
     [SerializeField] GameObject leaderboardItemPrefab;
     [SerializeField] GameObject leaderboardItemTrippleDots;
 
-    // Arrows for loading more players
-    [SerializeField] GameObject upArrow;
-    [SerializeField] GameObject downArrow;
-
     // This is for saving the name before it has been changed, so receive diamonds
     [SerializeField] GameObject changeNameGetDiamondsButton;
     // This is for saving the name after it has been changed
@@ -78,7 +74,7 @@ public class LeaderboardStatus : MonoBehaviour
         changeNameView.transform.localScale = new Vector3(1, 1, 1);
         changeNameView.SetActive(false);
 
-        //server.GetLeaderboard();
+        server.GetLeaderboard();
     }
 
     private void SwapSaveButton()
@@ -255,38 +251,33 @@ public class LeaderboardStatus : MonoBehaviour
             // Set its parent to be scroll content, for scroll functionality to work properly
             leaderboardItem.transform.SetParent(leaderboardScrollContent.transform);
 
-            if (itemData.rank > 3)
+            // Compare item from top ten with your rank incase you are in top ten
+            if (itemData.rank == you.rank)
             {
-                // Compare item from top ten with your rank incase you are in top ten
-                if (itemData.rank == you.rank)
-                {
-                    // Show frame around your entry
-                    ShowYourEntryFrame(leaderboardItem);
-                }
-
-                // Set its name component text to name from top list
-                leaderboardItem.transform.Find("NameItem").Find("NameText").GetComponent<Text>().text = itemData.playerName;
-                // Set its rank component text to rank from top list converted to string
-                leaderboardItem.transform.Find("NameItem").Find("RankText").GetComponent<Text>().text = itemData.rank.ToString();
-                // Set its ship component text to item's ship name
-                leaderboardItem.transform.Find("NameItem").Find("ShipText").GetComponent<Text>().text = allShips[itemData.currentShipIndex];
-                // Set its laser icon based on data from server and indexes of lasers
-                leaderboardItem.transform.Find("LaserItem").Find("Laser").GetComponent<Image>().sprite = allLasers[itemData.currentLaserIndex];
+                // Show frame around your entry
+                ShowYourEntryFrame(leaderboardItem);
             }
-            else
+
+            // Set its name component text to name from top list
+            leaderboardItem.transform.Find("NameItem").Find("NameText").GetComponent<Text>().text = itemData.playerName;
+            // Set its rank component text to rank from top list converted to string
+            leaderboardItem.transform.Find("NameItem").Find("RankText").GetComponent<Text>().text = itemData.rank.ToString();
+            // Set its ship component text to item's ship name
+            leaderboardItem.transform.Find("NameItem").Find("ShipText").GetComponent<Text>().text = allShips[itemData.currentShipIndex];
+            // Set its laser icon based on data from server and indexes of lasers
+            leaderboardItem.transform.Find("LaserItem").Find("Laser").GetComponent<Image>().sprite = allLasers[itemData.currentLaserIndex];
+
+            if (itemData.rank == 1)
             {
-                if (itemData.rank == 1)
-                {
-                    ShowGoldEntry(leaderboardItem);
-                }
-                else if (itemData.rank == 2)
-                {
-                    ShowSilverEntry(leaderboardItem);
-                }
-                else if (itemData.rank == 3)
-                {
-                    ShowBronzeEntry(leaderboardItem);
-                }
+                ShowGoldEntry(leaderboardItem);
+            }
+            else if (itemData.rank == 2)
+            {
+                ShowSilverEntry(leaderboardItem);
+            }
+            else if (itemData.rank == 3)
+            {
+                ShowBronzeEntry(leaderboardItem);
             }
         });
 
@@ -396,13 +387,13 @@ public class LeaderboardStatus : MonoBehaviour
     public void ClickChangeNameButton()
     {
         changeNameView.SetActive(true);
+        arrow.SetActive(false);
     }
 
     // This is for invisible button that covers the rest of the screen when modal is open
     public void CloseChangeName()
     {
         changeNameView.SetActive(false);
-        SwapSaveButton();
     }
 
     // Save name
@@ -421,17 +412,5 @@ public class LeaderboardStatus : MonoBehaviour
         }
 
         CloseChangeName();
-    }
-
-    public void LoadMoreDownPlayers()
-    {
-        downArrow.GetComponent<TriggerAnimation>().Trigger();
-        Debug.Log("Loading down Players");
-    }
-
-    public void LoadMoreUpPlayers()
-    {
-        upArrow.GetComponent<TriggerAnimation>().Trigger();
-        Debug.Log("Loading up Players");
     }
 }

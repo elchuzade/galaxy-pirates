@@ -42,24 +42,27 @@ public class Droppable : MonoBehaviour
 
     private void SetCollectToPosition()
     {
-        if (droppableItemName == DroppableItemName.Coin)
+        switch (droppableItemName)
         {
-            // A coin icon on Top Right to move dropped coins toward
-            Vector3 canvasCollectPosition = GameObject.Find("Coins").transform.Find("Coin").gameObject.transform.position;
+            case DroppableItemName.Coin:
+                // A coin icon on Top Right to move dropped coins toward
+                Vector3 canvasCollectPosition = GameObject.Find("Coins").transform.Find("Coin").gameObject.transform.position;
 
-            collectToPosition = new Vector3(
-                canvasCollectPosition.x,
-                canvasCollectPosition.y,
-                canvasCollectPosition.z);
-        }
-        else if (droppableItemName == DroppableItemName.Key)
-        {
-            // handle key stuff
-        }
-        else if (droppableItemName == DroppableItemName.Diamond)
-        {
-            // A diamond icon on Top Center to move dropped diamonds toward
-            collectToPosition = GameObject.Find("Diamonds").transform.Find("Diamond").gameObject.transform.position;
+                collectToPosition = new Vector3(
+                    canvasCollectPosition.x,
+                    canvasCollectPosition.y,
+                    canvasCollectPosition.z);
+                break;
+            case DroppableItemName.Diamond:
+                // A diamond icon on Top Center to move dropped diamonds toward
+                collectToPosition = GameObject.Find("Diamonds").transform.Find("Diamond").gameObject.transform.position;
+                break;
+            case DroppableItemName.RedKey:
+            case DroppableItemName.PurpleKey:
+            case DroppableItemName.BlueKey:
+                // A keys rect on Top Left to move dropped keys toward
+                collectToPosition = GameObject.Find("Keys").transform.position;
+                break;
         }
     }
 
@@ -79,13 +82,7 @@ public class Droppable : MonoBehaviour
 
         if (transform.position == collectToPosition)
         {
-            if (droppableItemName == DroppableItemName.Coin)
-            {
-                levelStatus.CollectCoins(1);
-            } else if (droppableItemName == DroppableItemName.Diamond)
-            {
-                levelStatus.CollectDiamonds(1);
-            }
+            levelStatus.CollectDroppableItem(droppableItemName);
             Destroy(gameObject);
         }
     }

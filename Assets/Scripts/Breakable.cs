@@ -19,6 +19,9 @@ public class Breakable : MonoBehaviour
     // Drop items to reward player for destroying the breakable object
     [SerializeField] GameObject coin;
     [SerializeField] GameObject diamond;
+    [SerializeField] GameObject redKey;
+    [SerializeField] GameObject purpleKey;
+    [SerializeField] GameObject blueKey;
 
     // Base is used to multiply the reward by factor that effects the chest price
     [Header("Diamond reward")]
@@ -29,6 +32,16 @@ public class Breakable : MonoBehaviour
     [SerializeField] int coinChance;
     [SerializeField] int coinBaseMin;
     [SerializeField] int coinBaseMax;
+    [Header("Keys reward")]
+    [SerializeField] int redKeyChance;
+    [SerializeField] int redKeyBaseMin;
+    [SerializeField] int redKeyBaseMax;
+    [SerializeField] int purpleKeyChance;
+    [SerializeField] int purpleKeyBaseMin;
+    [SerializeField] int purpleKeyBaseMax;
+    [SerializeField] int blueKeyChance;
+    [SerializeField] int blueKeyBaseMin;
+    [SerializeField] int blueKeyBaseMax;
 
     void Awake()
     {
@@ -128,6 +141,33 @@ public class Breakable : MonoBehaviour
         // Drop rewards in -5 to 5 pixels away from the breakable object
         switch (reward)
         {
+            case Rewards.RedKey:
+                for (int i = 0; i < rewardCount; i++)
+                {
+                    // Drop a diamond as a reward for destroying the breakable object
+                    GameObject redKeyInstance = Instantiate(redKey, transform.position, Quaternion.identity);
+                    redKeyInstance.GetComponent<Droppable>().InitializeDroppable(
+                        new Vector2(transform.position.x + Random.Range(-20, 20), transform.position.y + Random.Range(-20, 20)), 80);
+                }
+                break;
+            case Rewards.PurpleKey:
+                for (int i = 0; i < rewardCount; i++)
+                {
+                    // Drop a diamond as a reward for destroying the breakable object
+                    GameObject purpleKeyInstance = Instantiate(purpleKey, transform.position, Quaternion.identity);
+                    purpleKeyInstance.GetComponent<Droppable>().InitializeDroppable(
+                        new Vector2(transform.position.x + Random.Range(-20, 20), transform.position.y + Random.Range(-20, 20)), 80);
+                }
+                break;
+            case Rewards.BlueKey:
+                for (int i = 0; i < rewardCount; i++)
+                {
+                    // Drop a diamond as a reward for destroying the breakable object
+                    GameObject blueKeyInstance = Instantiate(blueKey, transform.position, Quaternion.identity);
+                    blueKeyInstance.GetComponent<Droppable>().InitializeDroppable(
+                        new Vector2(transform.position.x + Random.Range(-20, 20), transform.position.y + Random.Range(-20, 20)), 80);
+                }
+                break;
             case Rewards.Diamond:
                 for (int i = 0; i < rewardCount; i++)
                 {
@@ -161,6 +201,18 @@ public class Breakable : MonoBehaviour
         {
             allRewards.Add(Rewards.Coin);
         }
+        for (int i = 0; i < redKeyChance; i++)
+        {
+            allRewards.Add(Rewards.RedKey);
+        }
+        for (int i = 0; i < purpleKeyChance; i++)
+        {
+            allRewards.Add(Rewards.BlueKey);
+        }
+        for (int i = 0; i < blueKeyChance; i++)
+        {
+            allRewards.Add(Rewards.BlueKey);
+        }
         return allRewards;
     }
 
@@ -174,6 +226,15 @@ public class Breakable : MonoBehaviour
                 break;
             case Rewards.Coin:
                 result = Random.Range(coinBaseMin, coinBaseMax);
+                break;
+            case Rewards.RedKey:
+                result = Random.Range(redKeyBaseMin, redKeyBaseMax);
+                break;
+            case Rewards.PurpleKey:
+                result = Random.Range(purpleKeyBaseMin, purpleKeyBaseMax);
+                break;
+            case Rewards.BlueKey:
+                result = Random.Range(blueKeyBaseMin, blueKeyBaseMax);
                 break;
         }
         return result;

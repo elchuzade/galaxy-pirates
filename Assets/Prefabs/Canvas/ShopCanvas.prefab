@@ -397,7 +397,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d5d5678aa618a4b8485bbb3c5a964746, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1c3094135d8a14a36af0fb0132ff2a12, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -682,7 +682,7 @@ MonoBehaviour:
   m_Direction: 0
   m_Value: 0.5
   m_Size: 0.19424461
-  m_NumberOfSteps: 5
+  m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -752,7 +752,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 741af8701c86448dab2e42ddceababb0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 778711b37b9f54ec287ee4926d46d2e4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1171,7 +1171,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5b6f39237e5b149f0839d4c1c7b8dc1a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1a2444d7ed4d8445a97bd3b84112fb44, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1759,7 +1759,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -120, y: -230}
+  m_AnchoredPosition: {x: -120, y: -260}
   m_SizeDelta: {x: 240, y: 260}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &5810145931186381007
@@ -2079,7 +2079,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 51f8e85d0264145de95a0f806ac94544, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bf8b5bf62b6104103aba8987296076c9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2186,7 +2186,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: bb45f879a3978426caddbf4cb95a42c3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 17d02b958394f4a53925fea350e42bef, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2282,9 +2282,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Content: {fileID: 4107105366107155719}
   m_Horizontal: 1
-  m_Vertical: 1
-  m_MovementType: 2
-  m_Elasticity: 0.1
+  m_Vertical: 0
+  m_MovementType: 1
+  m_Elasticity: 0.5
   m_Inertia: 1
   m_DecelerationRate: 0.135
   m_ScrollSensitivity: 1

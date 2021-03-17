@@ -70,7 +70,7 @@ public class Player : MonoBehaviour
         playerCreated = false;
         privacyPolicy = false;
         nameChanged = false;
-        allPlanets = new List<int>() { -1, -1, 0, 0, 0 };
+        allPlanets = new List<int>() { 1, -1, 0, 0, 0 };
         allShips = new List<int>() { 1, 1, 0, 1, 0, 0 };
         allLasers = new List<int>() { 1, 0, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0 };
         currentLaserIndex = 0;

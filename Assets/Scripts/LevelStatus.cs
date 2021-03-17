@@ -7,6 +7,13 @@ public class LevelStatus : MonoBehaviour
     Player player;
     Navigator navigator;
 
+    [SerializeField] GameObject gamePlane;
+    [SerializeField] GameObject keys;
+
+    [SerializeField] GameObject redKeyItem;
+    [SerializeField] GameObject purpleKeyItem;
+    [SerializeField] GameObject blueKeyItem;
+
     // Coordiantes where to place a player ship
     [SerializeField] GameObject playerShipPosition;
     [SerializeField] GameObject[] playerShips;
@@ -29,10 +36,15 @@ public class LevelStatus : MonoBehaviour
     int titanium;
     int diamonds;
     int coins;
+    int redKeys;
+    int purpleKeys;
+    int blueKeys;
 
     void Awake()
     {
         navigator = FindObjectOfType<Navigator>();
+
+        gamePlane.SetActive(false);
     }
 
     void Start()
@@ -86,6 +98,47 @@ public class LevelStatus : MonoBehaviour
     {
         diamondsText.text = diamonds.ToString();
         coinsText.text = coins.ToString();
+    }
+
+    public void CollectDroppableItem(DroppableItemName itemName)
+    {
+        if (itemName == DroppableItemName.Coin)
+        {
+            CollectCoins(1);
+        }
+        else if (itemName == DroppableItemName.Diamond)
+        {
+            CollectDiamonds(1);
+        }
+        else if (itemName == DroppableItemName.RedKey ||
+            itemName == DroppableItemName.PurpleKey ||
+            itemName == DroppableItemName.BlueKey)
+        {
+            CollectKey(itemName);
+        }
+    }
+
+    private void CollectKey(DroppableItemName keyName)
+    {
+        // Increase count of that key and instantiate it in the keys horizontal layout
+        if (keyName == DroppableItemName.RedKey)
+        {
+            redKeys++;
+            GameObject redKeyInstance = Instantiate(redKeyItem, keys.transform.position, Quaternion.Euler(0, 0, -30));
+            redKeyInstance.transform.SetParent(keys.transform);
+        }
+        else if (keyName == DroppableItemName.PurpleKey)
+        {
+            purpleKeys++;
+            GameObject purpleKeyInstance = Instantiate(purpleKeyItem, keys.transform.position, Quaternion.Euler(0, 0, -30));
+            purpleKeyInstance.transform.SetParent(keys.transform);
+        }
+        else if (keyName == DroppableItemName.BlueKey)
+        {
+            blueKeys++;
+            GameObject blueKeyInstance = Instantiate(blueKeyItem, keys.transform.position, Quaternion.Euler(0, 0, -30));
+            blueKeyInstance.transform.SetParent(keys.transform);
+        }
     }
 
     // @Access from scrap material script

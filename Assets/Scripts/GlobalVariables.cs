@@ -6,7 +6,7 @@
 
     public enum BreakableObjectName { Moon, Satellite, Meteor, Astronaut, EnemyShip };
 
-    public enum DroppableItemName { Coin, Key, Diamond }
+    public enum DroppableItemName { Coin, Diamond, RedKey, PurpleKey, BlueKey }
 
     public enum Direction { Clockwise, CounterClockwise }
 
@@ -16,5 +16,5 @@
 
     public enum ChestColors { Blue, Purple, Red, None };
 
-    public enum Rewards { Diamond, Coin, Gold, Aluminum, Copper, Brass, Titanium };
+    public enum Rewards { Diamond, Coin, Gold, RedKey, PurpleKey, BlueKey, Aluminum, Copper, Brass, Titanium };
 }

@@ -15,7 +15,8 @@ public class TouchRotate : MonoBehaviour
 
     void Start()
     {
-
+        // Hide the circle around the wall that indicates finger touch area
+        transform.GetComponent<SpriteRenderer>().enabled = false;
     }
 
     void Update()
@@ -28,7 +29,8 @@ public class TouchRotate : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0) && !touching)
         {
-            if (Vector2.Distance(transform.position, Input.mousePosition) < touchRadius)
+            Vector3 worldMouseCoords = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            if (Vector2.Distance(transform.position, worldMouseCoords) < touchRadius)
             {
                 touching = true;
                 transform.Find("WallReflect").GetComponent<SpriteRenderer>().color = new Color32(200, 200, 200, 255);
