@@ -38,10 +38,19 @@ public class Server : MonoBehaviour
     {
         public int coins;
         public int diamonds;
+        public int gold;
+        public int aluminum;
+        public int copper;
+        public int brass;
+        public int titanium;
+        public int power;
         public int nextLevelIndex;
-        public string currentBall;
-        public List<string> unlockedBalls;
-        public List<int> unlockedChallenges;
+        public int currentLaserIndex;
+        public int currentShipIndex;
+        public int currentPlanetIndex;
+        public List<int> allLasers;
+        public List<int> allPlanets;
+        public List<int> allShips;
     }
 
     // LOCAL TESTING
@@ -77,36 +86,76 @@ public class Server : MonoBehaviour
     /* ---------- LOAD SCENE ---------- */
 
     // CREATE NEW PLAYER
-    public void CreatePlayer()
+    public void CreatePlayer(Player player)
     {
         string playerUrl = ballAndWallsApi + "/player";
-        StartCoroutine(CreatePlayerCoroutine(playerUrl));
+
+        string playerDataUrl = ballAndWallsApi + "/data";
+
+        PlayerData playerData = new PlayerData();
+        playerData.coins = player.coins;
+        playerData.diamonds = player.diamonds;
+        playerData.gold = player.gold;
+        playerData.aluminum = player.aluminum;
+        playerData.copper = player.copper;
+        playerData.brass = player.brass;
+        playerData.titanium = player.titanium;
+        playerData.power = player.power;
+        playerData.nextLevelIndex = player.nextLevelIndex;
+        playerData.currentShipIndex = player.currentShipIndex;
+        playerData.currentLaserIndex = player.currentLaserIndex;
+        playerData.currentPlanetIndex = player.currentPlanetIndex;
+        playerData.allPlanets = new List<int>();
+        playerData.allShips = new List<int>();
+        playerData.allLasers = new List<int>();
+
+        player.allPlanets.ForEach(p =>
+        {
+            playerData.allPlanets.Add(p);
+        });
+
+        player.allShips.ForEach(s =>
+        {
+            playerData.allShips.Add(s);
+        });
+
+        player.allLasers.ForEach(l =>
+        {
+            playerData.allLasers.Add(l);
+        });
+
+        string playerDataJson = JsonUtility.ToJson(playerData);
+
+        StartCoroutine(CreatePlayerCoroutine(playerUrl, playerDataJson));
     }
 
     // This one is called when the game is just launched
     // Either create a new player or move on
-    private IEnumerator CreatePlayerCoroutine(string url)
+    private IEnumerator CreatePlayerCoroutine(string url, string playerData)
     {
-        using (UnityWebRequest webRequest = UnityWebRequest.Get(url))
+        var jsonBinary = System.Text.Encoding.UTF8.GetBytes(playerData);
+        DownloadHandlerBuffer downloadHandlerBuffer = new DownloadHandlerBuffer();
+        UploadHandlerRaw uploadHandlerRaw = new UploadHandlerRaw(jsonBinary);
+        uploadHandlerRaw.contentType = "application/json";
+
+        UnityWebRequest webRequest =
+            new UnityWebRequest(url, "POST", downloadHandlerBuffer, uploadHandlerRaw);
+
+        string message = JsonUtility.ToJson(header);
+        string headerMessage = BuildHeaders(message);
+        webRequest.SetRequestHeader("token", headerMessage);
+
+        yield return webRequest.SendWebRequest();
+        if (webRequest.isNetworkError)
         {
-            string message = JsonUtility.ToJson(header);
-            string headerMessage = BuildHeaders(message);
-            webRequest.SetRequestHeader("token", headerMessage);
-
-            // Send request and wait for the desired response.
-            yield return webRequest.SendWebRequest();
-
-            if (webRequest.isNetworkError)
-            {
-                Debug.Log(webRequest.downloadHandler.text);
-                // Set the error received from creating a player
-            }
-            else
-            {
-                Debug.Log(webRequest.downloadHandler.text);
-                // Make the success actions received from creating a player
-                //mainStatus.CreatePlayerSuccess();
-            }
+            Debug.Log(webRequest.downloadHandler.text);
+            // Set the error received from creating a player
+        }
+        else
+        {
+            Debug.Log(webRequest.downloadHandler.text);
+            // Make the success actions received from creating a player
+            mainStatus.CreatePlayerSuccess();
         }
     }
 
@@ -120,20 +169,34 @@ public class Server : MonoBehaviour
         PlayerData playerData = new PlayerData();
         playerData.coins = player.coins;
         playerData.diamonds = player.diamonds;
+        playerData.gold = player.gold;
+        playerData.aluminum = player.aluminum;
+        playerData.copper = player.copper;
+        playerData.brass = player.brass;
+        playerData.titanium = player.titanium;
+        playerData.power = player.power;
         playerData.nextLevelIndex = player.nextLevelIndex;
-        //playerData.currentBall = player.currentBall;
-        playerData.unlockedBalls = new List<string>();
-        playerData.unlockedChallenges = new List<int>();
+        playerData.currentShipIndex = player.currentShipIndex;
+        playerData.currentLaserIndex = player.currentLaserIndex;
+        playerData.currentPlanetIndex = player.currentPlanetIndex;
+        playerData.allPlanets = new List<int>();
+        playerData.allShips = new List<int>();
+        playerData.allLasers = new List<int>();
 
-        //player.unlockedBalls.ForEach(b =>
-        //{
-        //    playerData.unlockedBalls.Add(b);
-        //});
+        player.allPlanets.ForEach(p =>
+        {
+            playerData.allPlanets.Add(p);
+        });
 
-        //player.unlockedChallenges.ForEach(c =>
-        //{
-        //    playerData.unlockedChallenges.Add(c);
-        //});
+        player.allShips.ForEach(s =>
+        {
+            playerData.allShips.Add(s);
+        });
+
+        player.allLasers.ForEach(l =>
+        {
+            playerData.allLasers.Add(l);
+        });
 
         string playerDataJson = JsonUtility.ToJson(playerData);
 

@@ -59,7 +59,7 @@ public class LeaderboardStatus : MonoBehaviour
     void Start()
     {
         player = FindObjectOfType<Player>();
-        player.ResetPlayer();
+        //player.ResetPlayer();
         player.LoadPlayer();
 
         diamondsText.text = player.diamonds.ToString();
@@ -399,7 +399,7 @@ public class LeaderboardStatus : MonoBehaviour
     // Save name
     public void ClickSaveName()
     {
-        //server.ChangePlayerName(nameInput.text);
+        server.ChangePlayerName(nameInput.text);
         if (player.playerName.Length < 2)
         {
             player.playerName = nameInput.text;

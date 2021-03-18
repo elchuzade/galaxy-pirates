@@ -614,6 +614,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7088135462466736046, guid: 51038eca1eaeb4b8aa56962879199047,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7979768983836277118, guid: 51038eca1eaeb4b8aa56962879199047,
         type: 3}
       propertyPath: redChest

@@ -28,6 +28,7 @@ public class MainStatus : MonoBehaviour
 
     [SerializeField] GameObject privacyWindow;
     [SerializeField] GameObject quitGameWindow;
+    [SerializeField] GameObject leaderboardButton;
 
     void Awake()
     {
@@ -53,22 +54,21 @@ public class MainStatus : MonoBehaviour
         if (player.privacyPolicy)
         {
             privacyWindow.SetActive(false);
-            //leaderboardButton.GetComponent<Button>().onClick.AddListener(() => ClickLeaderboardButton());
+            leaderboardButton.GetComponent<Button>().onClick.AddListener(() => ClickLeaderboardButton());
 
             if (!player.playerCreated)
             {
-                //server.CreatePlayer();
+                server.CreatePlayer(player);
             }
             else
             {
-                //server.SavePlayerData(player);
+                server.SavePlayerData(player);
             }
         }
         else
         {
-            //leaderboardButton.GetComponent<Button>().onClick.AddListener(() => ShowPrivacyPolicy());
-            //leaderboardButton.transform.Find("Components").Find("Frame").GetComponent<Image>().color = new Color32(255, 197, 158, 100);
-            //leaderboardButton.transform.Find("Components").Find("Icon").GetComponent<Image>().color = new Color32(255, 255, 255, 100);
+            leaderboardButton.GetComponent<Button>().onClick.AddListener(() => ShowPrivacyPolicy());
+            leaderboardButton.GetComponent<Image>().color = new Color32(255, 197, 158, 100);
         }
 
         SetScoreboardValues();
@@ -84,6 +84,13 @@ public class MainStatus : MonoBehaviour
         {
             quitGameWindow.SetActive(true);
         }
+    }
+
+    // @access from server
+    public void CreatePlayerSuccess()
+    {
+        player.playerCreated = true;
+        player.SavePlayer();
     }
 
     // Set video link from server file
@@ -221,16 +228,15 @@ public class MainStatus : MonoBehaviour
 
     public void ClickAcceptPrivacyPolicy()
     {
-        //leaderboardButton.transform.Find("Components").Find("Frame").GetComponent<Image>().color = new Color32(255, 197, 158, 255);
-        //leaderboardButton.transform.Find("Components").Find("Icon").GetComponent<Image>().color = new Color32(255, 255, 255, 255);
-        //leaderboardButton.GetComponent<Button>().onClick.AddListener(() => ClickLeaderboardButton());
+        leaderboardButton.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+        leaderboardButton.GetComponent<Button>().onClick.AddListener(() => ClickLeaderboardButton());
 
         privacyWindow.transform.localScale = new Vector3(0, 1, 1);
         privacyWindow.SetActive(false);
         player.privacyPolicy = true;
         player.SavePlayer();
 
-        //server.CreatePlayer();
+        server.CreatePlayer(player);
     }
 
     public void ClickQuitGame()

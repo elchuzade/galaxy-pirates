@@ -628,6 +628,7 @@ MonoBehaviour:
   chestButton: {fileID: 2329407088352700643}
   privacyWindow: {fileID: 3348014882132665316}
   quitGameWindow: {fileID: 5111030261821954225}
+  leaderboardButton: {fileID: 5531922279503826497}
 --- !u!1 &2329407088352700643
 GameObject:
   m_ObjectHideFlags: 0
@@ -3915,11 +3916,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9165640356795152950, guid: 9fdf5cb2614804cdfbee2a8bb79913dd,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9165640356795152950, guid: 9fdf5cb2614804cdfbee2a8bb79913dd,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 5770368629219832084}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9fdf5cb2614804cdfbee2a8bb79913dd, type: 3}
+--- !u!1 &5531922279503826497 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1569820645276534705, guid: 9fdf5cb2614804cdfbee2a8bb79913dd,
+    type: 3}
+  m_PrefabInstance: {fileID: 6416584450715240944}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6779451351243446273
 PrefabInstance:
   m_ObjectHideFlags: 0
