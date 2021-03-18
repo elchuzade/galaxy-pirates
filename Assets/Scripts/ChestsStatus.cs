@@ -23,10 +23,6 @@ public class ChestsStatus : MonoBehaviour
     [SerializeField] GameObject purpleChest;
     [SerializeField] GameObject blueChest;
 
-    [SerializeField] GameObject buyButton;
-    [SerializeField] GameObject watchButton;
-    [SerializeField] GameObject openButton;
-
     // Green is just to ignore all actual colors. Like default
     ChestColors selectedChestColor = ChestColors.None;
 
@@ -82,9 +78,9 @@ public class ChestsStatus : MonoBehaviour
 
     private void ResetAllButtons()
     {
-        openButton.SetActive(false);
-        watchButton.SetActive(false);
-        buyButton.SetActive(false);
+        redChest.transform.Find("OpenButton").gameObject.SetActive(false);
+        purpleChest.transform.Find("OpenButton").gameObject.SetActive(false);
+        blueChest.transform.Find("OpenButton").gameObject.SetActive(false);
     }
 
     public void SelectBlueChest()
@@ -103,11 +99,11 @@ public class ChestsStatus : MonoBehaviour
         ResetAllButtons();
         if (player.blueChestCount > 0)
         {
-            openButton.SetActive(true);
+            blueChest.transform.Find("OpenButton").gameObject.SetActive(true);
         }
         else
         {
-            watchButton.SetActive(true);
+            blueChest.transform.Find("OpenButton").gameObject.SetActive(false);
         }
     }
 
@@ -126,11 +122,11 @@ public class ChestsStatus : MonoBehaviour
         ResetAllButtons();
         if (player.purpleChestCount > 0)
         {
-            openButton.SetActive(true);
+            purpleChest.transform.Find("OpenButton").gameObject.SetActive(true);
         }
         else
         {
-            buyButton.SetActive(true);
+            purpleChest.transform.Find("OpenButton").gameObject.SetActive(false);
         }
     }
 
@@ -149,11 +145,11 @@ public class ChestsStatus : MonoBehaviour
         ResetAllButtons();
         if (player.redChestCount > 0)
         {
-            openButton.SetActive(true);
+            redChest.transform.Find("OpenButton").gameObject.SetActive(true);
         }
         else
         {
-            buyButton.SetActive(true);
+            redChest.transform.Find("OpenButton").gameObject.SetActive(false);
         }
     }
 

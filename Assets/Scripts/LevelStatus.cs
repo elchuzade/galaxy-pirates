@@ -7,6 +7,8 @@ public class LevelStatus : MonoBehaviour
     Player player;
     Navigator navigator;
 
+    [SerializeField] GameObject winPhrase;
+
     [SerializeField] GameObject gamePlane;
     [SerializeField] GameObject keys;
 
@@ -44,6 +46,8 @@ public class LevelStatus : MonoBehaviour
     {
         navigator = FindObjectOfType<Navigator>();
 
+        winPhrase.transform.localScale = new Vector3(1, 1, 1);
+        winPhrase.SetActive(false);
         gamePlane.SetActive(false);
     }
 
@@ -56,6 +60,12 @@ public class LevelStatus : MonoBehaviour
         SetPlayerShip();
         SetPlayerValues();
         SetScoreboardValues();
+    }
+
+    public void PassLevel()
+    {
+        Debug.Log("efe");
+        winPhrase.SetActive(true);
     }
 
     private void SetPlayerShip()

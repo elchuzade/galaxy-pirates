@@ -27,6 +27,7 @@ public class MainStatus : MonoBehaviour
     [SerializeField] GameObject chestButton;
 
     [SerializeField] GameObject privacyWindow;
+    [SerializeField] GameObject quitGameWindow;
 
     void Awake()
     {
@@ -37,6 +38,8 @@ public class MainStatus : MonoBehaviour
         hapticsButton = GameObject.Find("HapticsButton");
 
         privacyWindow.transform.localScale = new Vector3(1, 1, 1);
+        quitGameWindow.transform.localScale = new Vector3(1, 1, 1);
+        quitGameWindow.SetActive(false);
     }
 
     void Start()
@@ -73,6 +76,14 @@ public class MainStatus : MonoBehaviour
         SetUpgradeButton();
 
         SetChestButton();
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            quitGameWindow.SetActive(true);
+        }
     }
 
     // Set video link from server file
@@ -220,6 +231,16 @@ public class MainStatus : MonoBehaviour
         player.SavePlayer();
 
         //server.CreatePlayer();
+    }
+
+    public void ClickQuitGame()
+    {
+        Application.Quit();
+    }
+
+    public void CancelQuitGame()
+    {
+        quitGameWindow.SetActive(false);
     }
 
     public void ClickTermsOfUse()

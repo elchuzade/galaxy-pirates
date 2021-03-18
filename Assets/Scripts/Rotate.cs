@@ -27,6 +27,6 @@ public class Rotate : MonoBehaviour
     void Update()
     {
         // Rotate along Z axis based on direction and speed
-        transform.Rotate(new Vector3(0, 0, rotateSpeed * angularDirection * Time.deltaTime));
+        transform.parent.transform.Rotate(new Vector3(0, 0, rotateSpeed * angularDirection * Time.deltaTime));
     }
 }

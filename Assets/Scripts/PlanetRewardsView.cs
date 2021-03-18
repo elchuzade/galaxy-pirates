@@ -212,6 +212,16 @@ public class PlanetRewardsView : MonoBehaviour
     // Tap anywhere while reward is shown to close immediately
     public void CloseRewardView()
     {
+        // Remove all items from grid and appearing rewards
+        for (int i = 0; i < rewardsGrid.transform.childCount; i++)
+        {
+            Destroy(rewardsGrid.transform.GetChild(i).gameObject);
+        }
+        for (int i = 0; i < rewards.transform.childCount; i++)
+        {
+            Destroy(rewards.transform.GetChild(i).gameObject);
+        }
+
         gameObject.SetActive(false);
     }
 }

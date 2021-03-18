@@ -14,13 +14,21 @@ public class FollowPath : MonoBehaviour
     int currentWaypointIndex;
     bool moving;
 
+    // Palce to store all waypoints globally
+    GameObject globalWaypoints;
+
+    void Awake()
+    {
+        globalWaypoints = GameObject.Find("GlobalWaypoints");
+    }
+
     void Start()
     {
         if (waypoints.Length > 0)
         {
             // Move waypoints outside of theobject so they dont move along with the object
             // Their coordinates must be global. Not local to the object
-            transform.Find("Waypoints").SetParent(transform.parent);
+            transform.Find("Waypoints").SetParent(globalWaypoints.transform);
             StartCoroutine(MoveAlongPath(delay));
         }
     }
@@ -45,16 +53,16 @@ public class FollowPath : MonoBehaviour
         // Not to walk outside of waypoints array boundaries
         if (currentWaypointIndex < waypoints.Length)
         {
-            transform.position = Vector2.MoveTowards(transform.position, waypoints[currentWaypointIndex].position, speed * Time.deltaTime);
+            transform.parent.transform.position = Vector2.MoveTowards(transform.parent.transform.position, waypoints[currentWaypointIndex].position, speed * Time.deltaTime);
 
-            if (transform.position == waypoints[currentWaypointIndex].position)
+            if (transform.parent.transform.position == waypoints[currentWaypointIndex].position)
             {
                 currentWaypointIndex++;
                 // If this is the last waypoint check loop param and reset waypoints if needed
                 if (currentWaypointIndex == waypoints.Length && loop)
                 {
                     currentWaypointIndex = 0;
-                    transform.position = waypoints[currentWaypointIndex].position;
+                    transform.parent.transform.position = waypoints[currentWaypointIndex].position;
                 }
             }
         }

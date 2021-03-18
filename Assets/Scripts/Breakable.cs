@@ -6,7 +6,8 @@ using static GlobalVariables;
 [RequireComponent(typeof(Animator))]
 public class Breakable : MonoBehaviour
 {
-    
+    LevelStatus levelStatus;
+
     [SerializeField] BreakableObjectName breakableObjectName;
     [SerializeField] float healthPoints;
 
@@ -45,6 +46,7 @@ public class Breakable : MonoBehaviour
 
     void Awake()
     {
+        levelStatus = FindObjectOfType<LevelStatus>();
         // Find break and damage particle that is a child of the breakable object
         breakParticles = transform.Find("BreakParticles").gameObject;
         damageParticles = transform.Find("DamageParticles").gameObject;
@@ -133,6 +135,11 @@ public class Breakable : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
 
+        if (breakableObjectName == BreakableObjectName.EnemyShip)
+        {
+            levelStatus.PassLevel();
+        }
+
         Destroy(gameObject);
     }
 
@@ -207,7 +214,7 @@ public class Breakable : MonoBehaviour
         }
         for (int i = 0; i < purpleKeyChance; i++)
         {
-            allRewards.Add(Rewards.BlueKey);
+            allRewards.Add(Rewards.PurpleKey);
         }
         for (int i = 0; i < blueKeyChance; i++)
         {

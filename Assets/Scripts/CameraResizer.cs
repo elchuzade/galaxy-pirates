@@ -14,12 +14,10 @@ public class CameraResizer : MonoBehaviour
         if ((float)Screen.height / Screen.width > 2)
         {
             Camera.main.orthographicSize = 800;
-            transform.position = new Vector3(375, 800, -10);
         }
         else
         {
             Camera.main.orthographicSize = 667;
-            transform.position = new Vector3(375, 667, -10);
         }
 
         if ((float)Screen.width / Screen.height > 0.7)

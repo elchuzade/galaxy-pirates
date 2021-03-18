@@ -9579,6 +9579,7 @@ GameObject:
   - component: {fileID: 3477298788033481733}
   - component: {fileID: 3477298788033481730}
   - component: {fileID: 3477298788033481729}
+  - component: {fileID: 3401212892178250228}
   m_Layer: 0
   m_Name: EnemyShipOne
   m_TagString: EnemyShip
@@ -9684,6 +9685,25 @@ MonoBehaviour:
   healthPoints: 2000
   coin: {fileID: 3853550951012848469, guid: 3a672f4a5efed468ab08951520cd771f, type: 3}
   diamond: {fileID: 7051145812190331075, guid: 96443c225dba04bdd99925e475b7f32c, type: 3}
+  redKey: {fileID: 8981655374391456915, guid: 4ff460a0e14304b8d878f9c289b06ee0, type: 3}
+  purpleKey: {fileID: 8155856203712550162, guid: e8f05f89464e843e19641cde8bb03387,
+    type: 3}
+  blueKey: {fileID: 6246823012285160938, guid: 7f298b42e56124850be65ca52ef13a0f, type: 3}
+  diamondChance: 1
+  diamondBaseMin: 5
+  diamondBaseMax: 10
+  coinChance: 1
+  coinBaseMin: 50
+  coinBaseMax: 100
+  redKeyChance: 1
+  redKeyBaseMin: 1
+  redKeyBaseMax: 1
+  purpleKeyChance: 10
+  purpleKeyBaseMin: 1
+  purpleKeyBaseMax: 1
+  blueKeyChance: 1
+  blueKeyBaseMin: 1
+  blueKeyBaseMax: 1
 --- !u!95 &3477298788033481729
 Animator:
   serializedVersion: 3
@@ -9703,3 +9723,15 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &3401212892178250228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3477298788033481734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f2812a01c53d4536a285f618643aa58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
